@@ -1,66 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cp_bg_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#00000000"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cp_cardview"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:cardBackgroundColor="#00000000"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="0dp"
-        app:cardMaxElevation="0dp"
+    <data></data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="80dp"
+        android:background="@drawable/dialog_rounded_bg"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:elevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!-- Thumbs Up Button -->
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cp_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/order_delivery_anim"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="order_delivery.json"
+            app:lottie_loop="true"
+            app:lottie_speed="1" />
 
-            <ProgressBar
-                android:id="@+id/cp_pbar"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/please_wait"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/cp_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="15dp"
-                android:text=""
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</layout>
 
 
-    </androidx.cardview.widget.CardView>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>

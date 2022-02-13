@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/layout/progress_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/drawable/dialog_rounded_bg.xml" value="0.2203125" />
+        <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/layout/progress_item.xml" value="0.25" />
       </map>
     </option>
   </component>

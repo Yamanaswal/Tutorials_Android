@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "Library_Store"
 include ':app'
 include ':progress_dialog'
+include ':validations'
