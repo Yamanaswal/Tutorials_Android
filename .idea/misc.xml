@@ -6,7 +6,7 @@
         <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/drawable/dialog_rounded_bg.xml" value="0.2203125" />
         <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/layout/progress_item.xml" value="0.25" />
+        <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/layout/progress_item.xml" value="0.22" />
       </map>
     </option>
   </component>
@@ -15,5 +15,8 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="SuppressKotlinCodeStyleNotification">
+    <option name="disableForAll" value="true" />
   </component>
 </project>
