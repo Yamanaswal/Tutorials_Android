@@ -34,8 +34,7 @@ class ProgressAnimatedDialog() : DialogFragment() {
             dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE);
         }
 
-        Glide.with(requireContext()).asGif().load(R.drawable.scooter_anim)
-            .into(binding.orderDeliveryAnim)
+        Glide.with(requireContext()).asGif().load(R.drawable.scooter_anim).into(binding.orderDeliveryAnim)
 
         return binding.root
     }

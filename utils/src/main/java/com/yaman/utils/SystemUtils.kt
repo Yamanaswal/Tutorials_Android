@@ -26,6 +26,7 @@ fun getDeviceType(context: Context): String {
 }
 
 
+
 /**  Show Date and Time Interval (e.g. minute,seconds,months and year ago.) **/
 fun getDateDifferenceFromCurrentDate(date: Date): String? {
     val now: Calendar = Calendar.getInstance()
