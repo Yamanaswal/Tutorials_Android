@@ -1,0 +1,2 @@
+com/yaman/location_services/BuildConfig.java
+ com.yaman.location_services.BuildConfig
