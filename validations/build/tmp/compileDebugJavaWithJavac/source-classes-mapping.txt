@@ -1,0 +1,2 @@
+com/yaman/validations/BuildConfig.java
+ com.yaman.validations.BuildConfig
