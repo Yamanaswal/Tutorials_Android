@@ -10,7 +10,6 @@ rootProject.name = "Library_Store"
 include ':app'
 include ':progress_dialog'
 include ':validations'
-include ':location'
 include ':location_services'
-include ':app_permissions'
 include ':utils'
+include ':recycler_views'

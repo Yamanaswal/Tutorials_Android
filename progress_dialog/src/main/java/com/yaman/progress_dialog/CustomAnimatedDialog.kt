@@ -10,12 +10,11 @@ import android.view.Window
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
-import com.yaman.progress_dialog.databinding.ProgressItemBinding
+import com.yaman.progress_dialog.databinding.CustomProgressItemBinding
 
+class CustomAnimatedDialog() : DialogFragment() {
 
-class ProgressAnimatedDialog() : DialogFragment() {
-
-    private lateinit var binding: ProgressItemBinding
+    private lateinit var binding: CustomProgressItemBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +23,7 @@ class ProgressAnimatedDialog() : DialogFragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.progress_item,
+            R.layout.custom_progress_item,
             container,
             false
         )
@@ -34,11 +33,16 @@ class ProgressAnimatedDialog() : DialogFragment() {
             dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE);
         }
 
-        Glide.with(requireContext()).asGif().load(R.drawable.scooter_anim).into(binding.orderDeliveryAnim)
+        setViews()
 
         return binding.root
     }
 
+    private fun setViews() {
+        Glide.with(requireContext()).asGif().load(R.drawable.scooter_anim)
+            .into(binding.loaderView)
+
+    }
 
 
 }

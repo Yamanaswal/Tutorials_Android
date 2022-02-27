@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import androidx.recyclerview.widget.RecyclerView
 import com.yaman.location_services.GpsUtils
 import com.yaman.location_services.OnGpsListener
 import com.yaman.progress_dialog.ProgressAnimatedDialog
+//import com.yaman.recycler_views.ExpandableRecyclerViewAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,5 +28,9 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         }
+
+//        val rv = findViewById<RecyclerView>(R.id.rv)
+//        rv.adapter = ExpandableRecyclerViewAdapter(R.layout.custom_progress_item)
+//        }
     }
 }
