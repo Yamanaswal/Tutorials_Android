@@ -1,4 +1,4 @@
-package com.yaman.utils
+package com.yaman.utils.interfaces
 
 
 interface CalenderResponseListener<T> {
