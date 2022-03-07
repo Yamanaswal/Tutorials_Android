@@ -1,10 +1,9 @@
-package com.ripenapps.ridechef.utils.permssion
+package com.ripenapps.permissions
 
 import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.core.content.ContextCompat
-import com.ripenapps.permissions.PermissionResult
 
 abstract class BasePermissionManager : Fragment() {
 

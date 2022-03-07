@@ -1,7 +1,9 @@
-package com.ripenapps.ridechef.utils.permssion
+package com.ripenapps.permissions
 
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
+import com.ripenapps.permissions.PermissionResult
+import com.ripenapps.permissions.BasePermissionManager
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
