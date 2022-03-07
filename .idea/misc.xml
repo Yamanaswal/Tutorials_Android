@@ -8,6 +8,9 @@
         <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/layout/custom_progress_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/layout/progress_item.xml" value="0.22" />
+        <entry key="utils/src/main/res/drawable/camera.xml" value="0.23072916666666668" />
+        <entry key="utils/src/main/res/drawable/round_brown_edit_text.xml" value="0.23072916666666668" />
+        <entry key="utils/src/main/res/layout/fragment_image_dialog_picker.xml" value="0.21041666666666667" />
       </map>
     </option>
   </component>
