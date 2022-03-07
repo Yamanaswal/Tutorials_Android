@@ -13,6 +13,8 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AlertDialog
 import com.yaman.utils.interfaces.AlertDialogInterfaces
 import com.yaman.utils.models.SettingDialogData
+import java.text.ParseException
+import java.text.SimpleDateFormat
 import java.util.*
 
 /**  Get Device Id  **/
@@ -85,6 +87,36 @@ fun openKeyboard(context: Context, view: View) {
     inputMethodManager.showSoftInputFromInputMethod(view.windowToken, 0)
 }
 
+
+/**  TimeStamp to Date (String) Conversion. **/
+fun convertTimestampToDate(timeStamp: String?, datePattern: String?): String? {
+    val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+    val defaultTimeZone = TimeZone.getDefault()
+    val strDefaultTimeZone = defaultTimeZone.getDisplayName(false, TimeZone.SHORT)
+    format.timeZone = TimeZone.getTimeZone(strDefaultTimeZone)
+    try {
+        val date = format.parse(timeStamp)
+        return SimpleDateFormat(datePattern).format(date)
+    } catch (e: ParseException) {
+        e.printStackTrace()
+    }
+    return null
+}
+
+
+/**  Date String to Date Format - Conversion.
+ *  // ex- 2012-12-27 to 27 Dec 2012
+ * **/
+fun convertDateString(dateString: String, patternDate: String = "yyyy-MM-dd" ,formattedDate: String = "dd MMMM yyyy"): String? {
+    try {
+        Log.e(TAG, "convertDateString: $dateString")
+        val date = SimpleDateFormat(patternDate, Locale.getDefault()).parse(dateString)
+        return SimpleDateFormat(formattedDate, Locale.getDefault()).format(date ?: Calendar.getInstance().timeInMillis)
+    } catch (e: ParseException) {
+        e.printStackTrace()
+    }
+    return null
+}
 
 /**  Date to TimeStamp (String) Conversion. **/
 fun convertDateToTimestamp(date: String): String {
