@@ -29,6 +29,14 @@ class MainActivity : AppCompatActivity() {
             })
         }
 
+        findViewById<Button>(R.id.openRV).setOnClickListener {
+            GpsUtils(this).turnGPSOn(onGpsListener = object : OnGpsListener {
+                override fun gpsStatus(isGPSEnable: Boolean) {
+                    Log.e("TAG", "gpsStatus: $isGPSEnable", )
+                }
+            })
+        }
+
 //        val rv = findViewById<RecyclerView>(R.id.rv)
 //        rv.adapter = ExpandableRecyclerViewAdapter(R.layout.custom_progress_item)
 //        }

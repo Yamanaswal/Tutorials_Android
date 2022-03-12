@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.11458333333333333" />
         <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/drawable/dialog_rounded_bg.xml" value="0.2203125" />
         <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/layout/custom_progress_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/layout/progress_item.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_recycler_acitivity.xml" value="0.1" />
         <entry key="network_utils/src/main/res/drawable/button_bg.xml" value="0.23072916666666668" />
         <entry key="network_utils/src/main/res/layout/dialog.xml" value="0.25" />
         <entry key="network_utils/src/main/res/layout/dialog_view.xml" value="0.335" />
