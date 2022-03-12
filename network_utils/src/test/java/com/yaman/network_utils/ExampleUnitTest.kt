@@ -1,4 +1,4 @@
-package com.ripenapps.permissions
+package com.yaman.network_utils
 
 import org.junit.Test
 

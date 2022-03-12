@@ -1,4 +1,4 @@
-package com.ripenapps.permissions
+package com.yaman.permissions
 
 import android.content.pm.PackageManager
 import android.os.Bundle

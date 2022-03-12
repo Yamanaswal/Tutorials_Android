@@ -49,5 +49,6 @@ dependencies {
     implementation project(':location_services')
     implementation project(':recycler_views')
     implementation project(':permissions')
+    implementation project(':network_utils')
 
 }

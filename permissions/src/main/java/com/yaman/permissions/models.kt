@@ -1,4 +1,4 @@
-package com.ripenapps.permissions
+package com.yaman.permissions
 
 
 sealed class PermissionResult(val requestCode: Int) {

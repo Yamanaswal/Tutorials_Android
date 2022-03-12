@@ -1,6 +1,7 @@
 package com.yaman.validations
 
 import android.util.Log
+import android.util.Patterns
 
 const val TAG = "Validations: "
 
@@ -24,7 +25,6 @@ fun validateMobileNumber(mobileNumber: String): Valid {
 
     return Valid(validStatus = true, validReason = "")
 }
-
 
 /** Name Validation **/
 fun validateName(name: String): Valid {
@@ -55,10 +55,29 @@ fun validateImage(image: String): Valid {
     return Valid(validStatus = true, validReason = "")
 }
 
+/** Image Validation **/
+fun validateEmail(email: String): Valid {
+    Log.e(TAG, "validateEmail: $email")
+
+    if (email.isEmpty()) {
+        return Valid(
+            validStatus = false,
+            validReason = "Please Enter Email Address."
+        )
+    } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        return Valid(
+            validStatus = false,
+            validReason = "Please Enter Valid Email Address."
+        )
+    }
+
+    return Valid(validStatus = true, validReason = "")
+}
+
 
 /** Custom Validation **/
 fun validateCustom(value: String = "", validReasonMessage: String = ""): Valid {
-    Log.e(TAG, "validateImage: $value : $validReasonMessage")
+    Log.e(TAG, "validateCustom: $value : $validReasonMessage")
 
     if (value.isEmpty()) {
         return Valid(

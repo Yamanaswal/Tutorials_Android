@@ -1,4 +1,4 @@
-package com.ripenapps.permissions
+package com.yaman.network_utils
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.ripenapps.permissions.test", appContext.packageName)
+        assertEquals("com.yaman.network_utils.test", appContext.packageName)
     }
 }
