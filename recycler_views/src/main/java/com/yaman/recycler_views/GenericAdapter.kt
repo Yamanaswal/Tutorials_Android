@@ -1,26 +1,40 @@
 package com.yaman.recycler_views
 
-import androidx.recyclerview.widget.RecyclerView
+import android.view.LayoutInflater
 
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.ListAdapter
 
 /** Generic Adapter For Homogenous Recycler View */
-abstract class GenericAdapter<T>() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+abstract class GenericAdapter<T : Any>(@LayoutRes val layoutId: Int) :
+    ListAdapter<T, BaseViewHolder<T>>(BaseItemCallback<T>()) {
 
     //Custom List
     private var items = mutableListOf<T>()
 
     //Custom Methods
-    abstract fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder
-    abstract fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: T,position : Int)
+    abstract fun onBindViewHold(holder: BaseViewHolder<T>, position: Int)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return onCreateViewHolder(parent)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<T> {
+        val binding = DataBindingUtil.inflate<ViewDataBinding>(
+            LayoutInflater.from(parent.context),
+            layoutId,
+            parent,
+            false
+        )
+        return BaseViewHolder(binding)
+
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        onBindViewHolder(holder, items[position], position)
+    override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) {
+        onBindViewHold(holder, position)
     }
+
+    override fun getItemViewType(position: Int) = layoutId
 
     override fun getItemCount(): Int {
         return items.size
@@ -36,11 +50,19 @@ abstract class GenericAdapter<T>() : RecyclerView.Adapter<RecyclerView.ViewHolde
         val currentSize = this.items.size
         this.items.addAll(list)
         val newSize = this.items.size
-        notifyItemRangeChanged(currentSize,newSize)
+        notifyItemRangeChanged(currentSize, newSize)
     }
 
-    fun getItem(position: Int): T {
+    override fun getItem(position: Int): T {
         return items[position]
+    }
+
+    fun addItem(position: Int) {
+        items.removeAt(position)
+    }
+
+    fun removeItem(position: Int) {
+        items.removeAt(position)
     }
 
 }

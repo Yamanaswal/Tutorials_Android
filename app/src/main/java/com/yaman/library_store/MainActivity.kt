@@ -1,14 +1,13 @@
 package com.yaman.library_store
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import androidx.recyclerview.widget.RecyclerView
 import com.yaman.location_services.GpsUtils
 import com.yaman.location_services.OnGpsListener
 import com.yaman.progress_dialog.ProgressAnimatedDialog
-//import com.yaman.recycler_views.ExpandableRecyclerViewAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,15 +29,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.openRV).setOnClickListener {
-            GpsUtils(this).turnGPSOn(onGpsListener = object : OnGpsListener {
-                override fun gpsStatus(isGPSEnable: Boolean) {
-                    Log.e("TAG", "gpsStatus: $isGPSEnable", )
-                }
-            })
+            startActivity(Intent(this,RecyclerViewScreen::class.java))
         }
 
-//        val rv = findViewById<RecyclerView>(R.id.rv)
-//        rv.adapter = ExpandableRecyclerViewAdapter(R.layout.custom_progress_item)
-//        }
     }
+
 }
