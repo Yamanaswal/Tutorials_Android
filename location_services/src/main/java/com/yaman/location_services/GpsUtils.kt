@@ -35,13 +35,11 @@ class GpsUtils(private val context: Context) {
         mSettingsClient = LocationServices.getSettingsClient(context)
         locationRequest = LocationRequest.create()
 
-
         locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         locationRequest.interval = (10 * 1000).toLong()
         locationRequest.fastestInterval = (2 * 1000).toLong()
 
-        val builder = LocationSettingsRequest.Builder()
-            .addLocationRequest(locationRequest)
+        val builder = LocationSettingsRequest.Builder().addLocationRequest(locationRequest)
         mLocationSettingsRequest = builder.build()
         //**************************
         builder.setAlwaysShow(true) //this is the key ingredient
@@ -53,21 +51,21 @@ class GpsUtils(private val context: Context) {
     fun turnGPSOn(onGpsListener: OnGpsListener) {
         if (locationManager!!.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             onGpsListener.gpsStatus(true)
-        } else {
+        }
+        else {
+            onGpsListener.gpsStatus(false)
             mSettingsClient
                 ?.checkLocationSettings(mLocationSettingsRequest)
                 ?.addOnSuccessListener((context as Activity?)!!) { //  GPS is already enable, callback GPS status through listener
                     onGpsListener.gpsStatus(true)
                 }
-                ?.addOnFailureListener((context as Activity?)!!
-                ) { e ->
-                    val statusCode = (e as ApiException).statusCode
-                    when (statusCode) {
+                ?.addOnFailureListener((context as Activity?)!!) { e ->
+                    when ((e as ApiException).statusCode) {
                         LocationSettingsStatusCodes.RESOLUTION_REQUIRED -> try {
                             // Show the dialog by calling startResolutionForResult(), and check the
                             // result in onActivityResult().
                             val rae = e as ResolvableApiException
-                            rae.startResolutionForResult(context as Activity, 10012)
+                            rae.startResolutionForResult(context, 10012)
                         } catch (sie: SendIntentException) {
                             Log.i(TAG, "PendingIntent unable to execute request.")
                         }
@@ -75,8 +73,7 @@ class GpsUtils(private val context: Context) {
                             val errorMessage = "Location settings are inadequate, and cannot be " +
                                     "fixed here. Fix in Settings."
                             Log.e(TAG, errorMessage)
-                            Toast.makeText(context as Activity?, errorMessage, Toast.LENGTH_LONG)
-                                .show()
+                            Toast.makeText(context as Activity?, errorMessage, Toast.LENGTH_LONG).show()
                         }
                     }
                 }
