@@ -17,7 +17,7 @@
         <entry key="network_utils/src/main/res/layout/dialog_view.xml" value="0.335" />
         <entry key="utils/src/main/res/drawable/camera.xml" value="0.23072916666666668" />
         <entry key="utils/src/main/res/drawable/round_brown_edit_text.xml" value="0.23072916666666668" />
-        <entry key="utils/src/main/res/layout/fragment_image_dialog_picker.xml" value="0.335" />
+        <entry key="utils/src/main/res/layout/fragment_image_dialog_picker.xml" value="0.375" />
       </map>
     </option>
   </component>

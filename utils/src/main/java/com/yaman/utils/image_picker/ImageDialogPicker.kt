@@ -1,3 +1,5 @@
+package com.yaman.utils.image_picker
+
 import android.Manifest
 import android.app.Activity.RESULT_OK
 import android.content.Context
@@ -11,7 +13,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-
 import android.provider.MediaStore
 import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
@@ -24,10 +25,11 @@ import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
 import java.io.File
 
+const val TAG = "ImageDialogPicker"
+
 class ImageDialogPicker(imagePickerInterface: ImagePickerInterface) : DialogFragment() {
 
     lateinit var binding: FragmentImageDialogPickerBinding
-    val TAG = "ImageDialogPicker"
     private val TAKE_PICTURE = 1
     private val GALLERY_PICTURE = 2
     private val PERMISSIONS_REQUEST_CAMERA = 3

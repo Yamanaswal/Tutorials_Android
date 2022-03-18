@@ -14,7 +14,6 @@ import android.database.Cursor
 import android.net.Uri
 import android.os.Environment
 
-
 object RealPathUtil {
 
     /**
