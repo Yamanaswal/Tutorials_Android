@@ -14,7 +14,9 @@ fun openDatePicker(
     startMonth: Int = Calendar.getInstance()[Calendar.MONTH],
     startDay: Int = Calendar.getInstance()[Calendar.DAY_OF_MONTH],
     minDate: Long = Calendar.getInstance().timeInMillis,
+    maxDate: Long = Calendar.getInstance().timeInMillis,
     isMinDate: Boolean = false,
+    isMaxDate: Boolean = false,
     listener: (dayOfMonth:Int, monthOfYear:Int,year:Int) -> Unit
 ) {
 
@@ -31,6 +33,10 @@ fun openDatePicker(
     //No Min Date.
     if (isMinDate) {
         datePickerDialog.datePicker.minDate = minDate
+    }
+
+    if(isMaxDate){
+        datePickerDialog.datePicker.maxDate = maxDate
     }
 
     datePickerDialog.show()

@@ -31,7 +31,7 @@ class ProgressAnimatedDialog() : DialogFragment() {
         // Set transparent background and no title
         if (dialog != null && dialog?.window != null) {
             dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
-            dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE);
+            dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
         }
 
         Glide.with(requireContext()).asGif().load(R.drawable.scooter_anim).into(binding.orderDeliveryAnim)
