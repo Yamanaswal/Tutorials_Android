@@ -43,7 +43,7 @@
         android:layout_marginBottom="20dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:gravity="center_horizontal"
-        android:text="@string/check_your_internet_connection_and_try_again"
+        android:text="@string/no_internet_dialog"
         android:textColor="#ff000000"
         android:textSize="18sp" />
 
