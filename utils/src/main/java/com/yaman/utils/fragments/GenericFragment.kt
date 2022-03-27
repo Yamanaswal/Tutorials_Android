@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 open class GenericFragment<T : ViewDataBinding>(@LayoutRes private val layoutResId : Int) : Fragment(){
 
     private var _binding : T? = null
-    private val binding : T get() = _binding!!
+    val binding : T get() = _binding!!
 
     // Make it open, so it can be overridden in child fragments
     open fun T.initialize(){}
