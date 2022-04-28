@@ -9,25 +9,25 @@
         android:layout_height="match_parent"
         android:background="@drawable/dialog_rounded_bg"
         android:elevation="4dp"
-         android:gravity="center"
+        android:gravity="center"
         android:orientation="vertical">
 
         <!-- Thumbs Up Button -->
 
         <ImageView
             android:id="@+id/order_delivery_anim"
-            android:src="@drawable/scooter_anim"
             android:layout_width="wrap_content"
+            android:layout_height="170dp"
             android:layout_marginTop="16dp"
-            android:layout_height="170dp" />
+            android:src="@drawable/scooter_anim" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/please_wait"
             android:textAlignment="center"
-            android:layout_marginBottom="16dp"
             android:textColor="@color/black"
             android:textSize="22sp" />
 

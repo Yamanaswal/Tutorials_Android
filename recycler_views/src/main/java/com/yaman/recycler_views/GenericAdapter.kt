@@ -27,7 +27,6 @@ abstract class GenericAdapter<T : Any>(@LayoutRes val layoutId: Int) :
             false
         )
         return BaseViewHolder(binding)
-
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) {

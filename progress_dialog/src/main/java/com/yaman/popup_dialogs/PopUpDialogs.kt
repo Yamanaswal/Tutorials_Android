@@ -1,4 +1,5 @@
-package com.yaman.progress_dialog
+package com.yaman.popup_dialogs
+
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -9,13 +10,12 @@ import android.view.ViewGroup
 import android.view.Window
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import com.bumptech.glide.Glide
-import com.yaman.progress_dialog.databinding.ProgressItemBinding
+import com.yaman.progress_dialog.R
+import com.yaman.progress_dialog.databinding.PopupDialogBinding
 
+class PopUpDialogWithTwoButtonIos(private val dataDialog: DialogData, val listener: (status: Boolean) -> Unit) : DialogFragment() {
 
-class ProgressAnimatedDialog : DialogFragment() {
-
-    private lateinit var binding: ProgressItemBinding
+    private lateinit var binding: PopupDialogBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,21 +24,31 @@ class ProgressAnimatedDialog : DialogFragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(
             inflater,
-            R.layout.progress_item,
+            R.layout.popup_dialog,
             container,
             false
         )
         // Set transparent background and no title
         if (dialog != null && dialog?.window != null) {
             dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
-            dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE)
+            dialog?.window?.requestFeature(Window.FEATURE_NO_TITLE);
         }
 
-        Glide.with(requireContext()).asGif().load(R.drawable.scooter_anim).into(binding.orderDeliveryAnim)
+        binding.dialogData = dataDialog
+
+        binding.okButton.setOnClickListener {
+            listener(true)
+        }
+
+        binding.cancelButton.setOnClickListener {
+            listener(false)
+            dismiss()
+        }
 
         return binding.root
     }
 
 
-
 }
+
+data class DialogData(val popUpTitle: String = "PopUp Title.",val popUpDesc: String = "PopUp Description.", val okText : String = "Ok",val cancelText: String = "Cancel")

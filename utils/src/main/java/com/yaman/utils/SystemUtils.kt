@@ -1,6 +1,7 @@
 package com.yaman.utils
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.Service
 import android.content.Context
 import android.content.DialogInterface
@@ -10,7 +11,6 @@ import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.app.AlertDialog
 import com.yaman.utils.interfaces.AlertDialogInterfaces
 import com.yaman.utils.models.SettingDialogData
 import java.text.ParseException
@@ -154,3 +154,37 @@ private fun showSettingsDialog(
     builder.show()
 }
 
+/**
+ * Add Hour and Minutes to Given Time. (12:15 AM + 6 Hour & 10 minutes)
+ */
+fun addTimeHourMinuteTo12HoursTime(twelveHoursTime: String,hour: Int, min: Int): String {
+
+    try {
+        val displayFormat = SimpleDateFormat("HH:mm")
+        val parseFormat = SimpleDateFormat("hh:mm a")
+        val date = parseFormat.parse(twelveHoursTime)
+        println("24 hours: " + displayFormat.format(date))
+
+        val calendar = Calendar.getInstance()
+        calendar.time = date
+        calendar.add(Calendar.HOUR_OF_DAY, hour)
+        calendar.add(Calendar.MINUTE, min)
+
+        val sdfnew = SimpleDateFormat("HH:mm")
+        println(sdfnew.format(calendar.time))
+        val datestr = sdfnew.format(calendar.time)
+
+
+        val sdfnewtwo = SimpleDateFormat("hh:mm").parse(datestr)
+        println(sdfnewtwo)
+
+        val sdfnewthree = SimpleDateFormat("hh:mm a")
+        println(sdfnewthree.format(sdfnewtwo))
+
+        return sdfnewthree.format(sdfnewtwo)
+
+    }catch (e: Exception){
+        Log.e("TAG", "timeConversion12to24: $e")
+    }
+    return ""
+}
