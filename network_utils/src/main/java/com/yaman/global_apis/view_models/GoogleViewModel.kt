@@ -1,19 +1,25 @@
-package com.yaman.global_apis.retrofit
+package com.yaman.global_apis.view_models
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yaman.global_apis.models.DirectionApiResponse
+import com.yaman.global_apis.retrofit.ApiResponse
+import com.yaman.global_apis.retrofit.ERROR
+import com.yaman.global_apis.retrofit.MainRepos
 import kotlinx.coroutines.launch
 
 class GoogleApiViewModel : ViewModel() {
 
-    private val googleRepo = GoogleRepo()
-
+    private val googleRepo = MainRepos()
 
     /*********************
      * Live Data
      * *******************/
+
+    val errorInApi: LiveData<ERROR>
+        get() = googleRepo.errorLiveDataGoogleRepo
+
 
     val googleDirectionApiResponse: LiveData<ApiResponse<DirectionApiResponse>>
         get() = googleRepo.googleDirectionLiveData

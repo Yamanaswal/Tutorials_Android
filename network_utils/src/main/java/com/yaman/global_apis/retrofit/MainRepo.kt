@@ -3,12 +3,12 @@ package com.yaman.global_apis.retrofit
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.yaman.global_apis.models.DirectionApiResponse
-import com.yaman.network_utils.R
+import com.yaman.global_apis.models.VerifyOtp
 import java.net.ConnectException
+import java.util.*
 
-class GoogleRepo  {
+class MainRepos  {
 
     /*** Class Name - TAG ***/
     private val tag = "MainRepo"
@@ -16,7 +16,7 @@ class GoogleRepo  {
     /*******************************************************************************
      * Api Service - Create Service
      * ****************************************************************************/
-    private var apiService: ApiService = RetrofitServiceGeneratorGoogle.createService(serviceClass = ApiService::class.java)
+    private var apiService: ApiService = RetrofitServiceGenerator.createService(serviceClass = ApiService::class.java)
 
     /********************************************************************************
      * Mutable And LiveData ApiResponse - Defined Here
@@ -24,7 +24,7 @@ class GoogleRepo  {
 
     private val errorMutableLiveData = MutableLiveData<ERROR>()
 
-    val errorLiveData: LiveData<ERROR>
+    val errorLiveDataGoogleRepo: LiveData<ERROR>
         get() = errorMutableLiveData
 
     private val googleDirectionMutableLiveData =
@@ -32,6 +32,18 @@ class GoogleRepo  {
 
     val googleDirectionLiveData: LiveData<ApiResponse<DirectionApiResponse>>
         get() = googleDirectionMutableLiveData
+
+    private val sendOtpMutableLiveData =
+        MutableLiveData<ApiResponse<Objects>>()
+
+    val sendOtpSmg91LiveData: LiveData<ApiResponse<Objects>>
+        get() = sendOtpMutableLiveData
+
+    private val verifyOtpMutableLiveData =
+        MutableLiveData<ApiResponse<VerifyOtp>>()
+
+    val verifyOtpSmg91LiveData: LiveData<ApiResponse<VerifyOtp>>
+        get() = verifyOtpMutableLiveData
 
 
     /**********************************************************************************
@@ -61,6 +73,61 @@ class GoogleRepo  {
     }
 
 
+
+    suspend fun sendOTPSmg91(
+        authkey: String,
+        mobile: String,
+        template_id: String?,
+        otp_length: String?
+    ) {
+        try {
+            val response = apiService.sendOTP(authkey, mobile, template_id, otp_length)
+
+            sendOtpMutableLiveData.postValue(
+                ApiResponse(
+                    response = response.body(),
+                    errorBody = response.errorBody(),
+                    error = response.message(),
+                    code = response.code()
+                )
+            )
+
+
+        } catch (e: Exception) {
+            Log.e(tag, "Exception (localizedMessage) -> sendOTP: ${e.localizedMessage}")
+            Log.e(tag, "Exception (message) -> sendOTP: ${e.message}")
+            if (e is ConnectException) {
+                errorMutableLiveData.postValue(ERROR.ConnectException)
+            }
+        }
+    }
+
+
+    suspend fun verifyOTPSmg91(
+        authkey: String,
+        mobile: String,
+        otp: String?
+    ) {
+        try {
+            val response = apiService.verifyOTP(authkey, mobile, otp)
+
+            verifyOtpMutableLiveData.postValue(
+                ApiResponse(
+                    response = response.body(),
+                    errorBody = response.errorBody(),
+                    error = response.message(),
+                    code = response.code()
+                )
+            )
+
+        } catch (e: Exception) {
+            Log.e(tag, "Exception (localizedMessage) -> sendOTP: ${e.localizedMessage}")
+            Log.e(tag, "Exception (message) -> sendOTP: ${e.message}")
+            if (e is ConnectException) {
+                errorMutableLiveData.postValue(ERROR.ConnectException)
+            }
+        }
+    }
 
 }
 

@@ -49,7 +49,7 @@ object RetrofitClient {
 
 
 /** Generate New Retrofit Service **/
-object RetrofitServiceGeneratorGoogle {
+object RetrofitServiceGenerator {
     private var BASE_URL: String = "https://maps.googleapis.com/maps/api/"
 
     fun <S> createService(serviceClass: Class<S>): S {
