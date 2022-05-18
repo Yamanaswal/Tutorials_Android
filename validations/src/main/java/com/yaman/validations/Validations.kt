@@ -36,6 +36,12 @@ fun validateName(name: String): Valid {
             validReason = "Please Enter Name."
         )
     }
+    else if(!name.matches("^[A-Za-z]+$".toRegex())){
+        return Valid(
+            validStatus = false,
+            validReason = "Please Enter Mobile Number Between 9 to 12."
+        )
+    }
 
     return Valid(validStatus = true, validReason = "")
 }
@@ -88,4 +94,5 @@ fun validateCustom(value: String = "", validReasonMessage: String = ""): Valid {
 
     return Valid(validStatus = true, validReason = "")
 }
+
 

@@ -1,6 +1,7 @@
 package com.yaman.utils
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.Service
 import android.content.Context
@@ -8,14 +9,18 @@ import android.content.DialogInterface
 import android.content.res.Configuration
 import android.os.IBinder
 import android.provider.Settings
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import com.yaman.utils.interfaces.AlertDialogInterfaces
 import com.yaman.utils.models.SettingDialogData
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
+
 
 /**  Get Device Id  **/
 @SuppressLint("HardwareIds")
@@ -187,4 +192,19 @@ fun addTimeHourMinuteTo12HoursTime(twelveHoursTime: String,hour: Int, min: Int):
         Log.e("TAG", "timeConversion12to24: $e")
     }
     return ""
+}
+
+
+fun getScreenWidth(context: Context): Int {
+    val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+    val displayMetrics = DisplayMetrics()
+    windowManager.defaultDisplay.getMetrics(displayMetrics)
+    return displayMetrics.widthPixels
+}
+
+fun getScreenHeight(context: Context): Int {
+    val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+    val displayMetrics = DisplayMetrics()
+    windowManager.defaultDisplay.getMetrics(displayMetrics)
+    return displayMetrics.heightPixels
 }

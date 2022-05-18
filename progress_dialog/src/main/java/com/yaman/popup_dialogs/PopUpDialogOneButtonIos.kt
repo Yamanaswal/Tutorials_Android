@@ -1,6 +1,5 @@
 package com.yaman.popup_dialogs
 
-
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -13,7 +12,10 @@ import androidx.fragment.app.DialogFragment
 import com.yaman.progress_dialog.R
 import com.yaman.progress_dialog.databinding.PopupDialogBinding
 
-class PopUpDialogWithTwoButtonIos(private val dataDialog: DialogData, val listener: (status: Boolean) -> Unit) : DialogFragment() {
+class PopUpDialogOneButtonIos(
+    private val dataDialog: DialogData,
+    val listener: (status: Boolean) -> Unit
+) : DialogFragment() {
 
     private lateinit var binding: PopupDialogBinding
 
@@ -40,15 +42,10 @@ class PopUpDialogWithTwoButtonIos(private val dataDialog: DialogData, val listen
             listener(true)
         }
 
-        binding.cancelButton.setOnClickListener {
-            listener(false)
-            dismiss()
-        }
+        binding.cancelButton.visibility = View.GONE
+        binding.centerView.visibility = View.GONE
 
         return binding.root
     }
 
-
 }
-
-data class DialogData(val popUpTitle: String = "PopUp Title.",val popUpDesc: String = "PopUp Description.", val okText : String = "Ok",val cancelText: String = "Cancel")
