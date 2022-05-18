@@ -1,7 +1,6 @@
 package com.yaman.utils
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.app.AlertDialog
 import android.app.Service
 import android.content.Context
@@ -19,7 +18,6 @@ import com.yaman.utils.models.SettingDialogData
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 /**  Get Device Id  **/
@@ -112,11 +110,17 @@ fun convertTimestampToDate(timeStamp: String?, datePattern: String?): String? {
 /**  Date String to Date Format - Conversion.
  *  // ex- 2012-12-27 to 27 Dec 2012
  * **/
-fun convertDateString(dateString: String, patternDate: String = "yyyy-MM-dd" ,formattedDate: String = "dd MMMM yyyy"): String? {
+fun convertDateString(
+    dateString: String,
+    patternDate: String = "yyyy-MM-dd",
+    formattedDate: String = "dd MMMM yyyy"
+): String? {
     try {
         Log.e(TAG, "convertDateString: $dateString")
         val date = SimpleDateFormat(patternDate, Locale.getDefault()).parse(dateString)
-        return SimpleDateFormat(formattedDate, Locale.getDefault()).format(date ?: Calendar.getInstance().timeInMillis)
+        return SimpleDateFormat(formattedDate, Locale.getDefault()).format(
+            date ?: Calendar.getInstance().timeInMillis
+        )
     } catch (e: ParseException) {
         e.printStackTrace()
     }
@@ -162,7 +166,7 @@ private fun showSettingsDialog(
 /**
  * Add Hour and Minutes to Given Time. (12:15 AM + 6 Hour & 10 minutes)
  */
-fun addTimeHourMinuteTo12HoursTime(twelveHoursTime: String,hour: Int, min: Int): String {
+fun addTimeHourMinuteTo12HoursTime(twelveHoursTime: String, hour: Int, min: Int): String {
 
     try {
         val displayFormat = SimpleDateFormat("HH:mm")
@@ -188,13 +192,25 @@ fun addTimeHourMinuteTo12HoursTime(twelveHoursTime: String,hour: Int, min: Int):
 
         return sdfnewthree.format(sdfnewtwo)
 
-    }catch (e: Exception){
+    } catch (e: Exception) {
         Log.e("TAG", "timeConversion12to24: $e")
     }
     return ""
 }
 
+/**
+Get Device Screen Properties
+ * */
+fun getDeviceProperties(context: Context): DisplayMetrics {
+    val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+    val displayMetrics = DisplayMetrics()
+    windowManager.defaultDisplay.getMetrics(displayMetrics)
+    return displayMetrics
+}
 
+/**
+Get Device Screen Width
+ * */
 fun getScreenWidth(context: Context): Int {
     val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
     val displayMetrics = DisplayMetrics()
@@ -202,6 +218,9 @@ fun getScreenWidth(context: Context): Int {
     return displayMetrics.widthPixels
 }
 
+/**
+Get Device Screen Height
+ * */
 fun getScreenHeight(context: Context): Int {
     val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
     val displayMetrics = DisplayMetrics()
