@@ -7,9 +7,9 @@ import androidx.appcompat.app.AlertDialog
 import com.yaman.global_apis.retrofit.ApiResponse
 import java.lang.Exception
 
-class ErrorHandler(private val context: Context, private val alertTitle: String?) {
+class ErrorHandler<T>(private val context: Context, private val alertTitle: String?) {
 
-    fun <S> error(apiResponse: ApiResponse<S>,errorClass: Class<S>) {
+    fun <S> error(apiResponse: ApiResponse<T>,errorClass: Class<S>) {
 
         try {
             Log.e("ErrorHandler: error: ", "code: ${apiResponse.code}")

@@ -9,6 +9,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import com.yaman.global_apis.view_models.GoogleApiViewModel
 import com.yaman.global_apis.view_models.Smg91ViewModel
+import com.yaman.network_utils.ErrorHandler
 import com.yaman.popup_dialogs.DialogData
 import com.yaman.popup_dialogs.PopUpDialogOneButtonIos
 import com.yaman.progress_dialog.ProgressAnimatedDialog
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.openRV).setOnClickListener {
 
         }
+
 
         val editText = findViewById<EditText>(R.id.editTextId)
 
