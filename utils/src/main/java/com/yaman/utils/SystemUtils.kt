@@ -227,3 +227,5 @@ fun getScreenHeight(context: Context): Int {
     windowManager.defaultDisplay.getMetrics(displayMetrics)
     return displayMetrics.heightPixels
 }
+
+

@@ -20,7 +20,6 @@
             <option value="$PROJECT_DIR$/validations" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

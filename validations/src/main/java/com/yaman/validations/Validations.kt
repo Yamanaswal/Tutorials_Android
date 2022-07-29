@@ -46,7 +46,6 @@ fun validateName(name: String): Valid {
     return Valid(validStatus = true, validReason = "")
 }
 
-
 /** Image Validation **/
 fun validateImage(image: String): Valid {
     Log.e(TAG, "validateImage: $image")
@@ -79,7 +78,6 @@ fun validateEmail(email: String): Valid {
 
     return Valid(validStatus = true, validReason = "")
 }
-
 
 /** Custom Validation **/
 fun validateCustom(value: String = "", validReasonMessage: String = ""): Valid {

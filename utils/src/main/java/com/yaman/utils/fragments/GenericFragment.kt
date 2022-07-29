@@ -8,6 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.yaman.utils.maps_utils.MapsUtils
 
 open class GenericFragment<T : ViewDataBinding>(@LayoutRes private val layoutResId : Int) : Fragment(){
 
@@ -22,6 +23,7 @@ open class GenericFragment<T : ViewDataBinding>(@LayoutRes private val layoutRes
 
         // Optionally set lifecycle owner if needed
         binding.lifecycleOwner = viewLifecycleOwner
+
 
         // Calling the extension function
         binding.initialize()
