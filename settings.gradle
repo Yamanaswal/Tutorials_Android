@@ -9,9 +9,7 @@ dependencyResolutionManagement {
 rootProject.name = "Library_Store"
 include ':app'
 include ':progress_dialog'
-include ':validations'
-include ':location_services'
-include ':utils'
-include ':recycler_views'
-include ':permissions'
-include ':network_utils'
+include ':network_tools'
+include ':database_utils'
+include ':library_tools'
+include ':maps_geo_tools'

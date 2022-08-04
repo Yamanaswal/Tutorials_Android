@@ -11,13 +11,11 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/location_services" />
-            <option value="$PROJECT_DIR$/network_utils" />
-            <option value="$PROJECT_DIR$/permissions" />
+            <option value="$PROJECT_DIR$/database_utils" />
+            <option value="$PROJECT_DIR$/library_tools" />
+            <option value="$PROJECT_DIR$/maps_geo_tools" />
+            <option value="$PROJECT_DIR$/network_tools" />
             <option value="$PROJECT_DIR$/progress_dialog" />
-            <option value="$PROJECT_DIR$/recycler_views" />
-            <option value="$PROJECT_DIR$/utils" />
-            <option value="$PROJECT_DIR$/validations" />
           </set>
         </option>
       </GradleProjectSettings>

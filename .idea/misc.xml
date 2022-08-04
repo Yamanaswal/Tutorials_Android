@@ -12,6 +12,13 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_recycler_acitivity.xml" value="0.1" />
         <entry key="app/src/main/res/layout/data_item.xml" value="0.21041666666666667" />
+        <entry key="library_tools/src/main/res/drawable/camera.xml" value="0.206" />
+        <entry key="library_tools/src/main/res/drawable/round_brown_edit_text.xml" value="0.206" />
+        <entry key="library_tools/src/main/res/layout/fragment_image_dialog_picker.xml" value="0.21145833333333333" />
+        <entry key="network_tools/src/main/res/drawable/about_us_red.xml" value="0.206" />
+        <entry key="network_tools/src/main/res/drawable/button_bg.xml" value="0.206" />
+        <entry key="network_tools/src/main/res/drawable/ic_no_wifi.xml" value="0.206" />
+        <entry key="network_tools/src/main/res/layout/dialog_view.xml" value="0.21145833333333333" />
         <entry key="network_utils/src/main/res/drawable/about_us_red.xml" value="0.1675" />
         <entry key="network_utils/src/main/res/drawable/button_bg.xml" value="0.23072916666666668" />
         <entry key="network_utils/src/main/res/layout/dialog.xml" value="0.25" />
@@ -22,6 +29,7 @@
         <entry key="progress_dialog/src/main/res/layout/popup_dialog.xml" value="0.375" />
         <entry key="progress_dialog/src/main/res/layout/progress_item.xml" value="0.209375" />
         <entry key="utils/src/main/res/drawable/camera.xml" value="0.23072916666666668" />
+        <entry key="utils/src/main/res/drawable/gallery.xml" value="0.206" />
         <entry key="utils/src/main/res/drawable/round_brown_edit_text.xml" value="0.23072916666666668" />
         <entry key="utils/src/main/res/layout/fragment_image_dialog_picker.xml" value="0.375" />
       </map>
