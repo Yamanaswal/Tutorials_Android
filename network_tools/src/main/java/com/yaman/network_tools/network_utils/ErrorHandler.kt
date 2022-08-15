@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
 import androidx.appcompat.app.AlertDialog
+import com.yaman.network_tools.R
 import com.yaman.network_tools.global_apis.retrofit.ApiResponse
-import com.yaman.network_utils.R
 import java.lang.Exception
 
 class ErrorHandler<T>(private val context: Context, private val alertTitle: String?) {

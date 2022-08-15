@@ -8,7 +8,6 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 
-
 /** Open Dialog For App Version. ***/
 fun openForceUpdateDialog(
     context: Context,

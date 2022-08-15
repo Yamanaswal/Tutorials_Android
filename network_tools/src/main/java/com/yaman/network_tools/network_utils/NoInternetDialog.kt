@@ -5,7 +5,7 @@ import android.content.Context
 import android.view.Window
 import android.widget.Button
 import android.widget.TextView
-import com.yaman.network_utils.R
+import com.yaman.network_tools.R
 
 class NoInternetDialog(private val context: Context,private val message: String?) {
 
@@ -27,3 +27,4 @@ class NoInternetDialog(private val context: Context,private val message: String?
         dialog.show()
     }
 }
+

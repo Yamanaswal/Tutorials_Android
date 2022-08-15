@@ -103,6 +103,31 @@ object SystemUtils {
         return null
     }
 
+    /**  24 Hours to 12 Hours - Time Conversion **/
+    fun convertTime24To12(date: String): String {
+        try {
+            val input = SimpleDateFormat("hh:mm", Locale.getDefault())
+            val data = input.parse(date)
+            val output = SimpleDateFormat("hh:mm a", Locale.getDefault())
+            return data?.let { it1 -> output.format(it1) }.toString()
+        } catch (e: Exception) {
+            LogUtils.e("convertTimeFormat Exception: : ", e.localizedMessage)
+        }
+        return ""
+    }
+
+    /**  12 Hours to 24 Hours - Time Conversion **/
+    fun convertTime12To24(date: String): String {
+        try {
+            val input = SimpleDateFormat("hh:mm a", Locale.getDefault())
+            val data = input.parse(date)
+            val output = SimpleDateFormat("hh:mm", Locale.getDefault())
+            return data?.let { it1 -> output.format(it1) }.toString()
+        } catch (e: Exception) {
+            LogUtils.e("convertTimeFormat Exception: : ", e.localizedMessage)
+        }
+        return ""
+    }
 
     /**  Date String to Date Format - Conversion.
      *  // ex- 2012-12-27 to 27 Dec 2012

@@ -11,7 +11,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/database_utils" />
             <option value="$PROJECT_DIR$/library_tools" />
             <option value="$PROJECT_DIR$/maps_geo_tools" />
             <option value="$PROJECT_DIR$/network_tools" />

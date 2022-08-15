@@ -10,6 +10,5 @@ rootProject.name = "Library_Store"
 include ':app'
 include ':progress_dialog'
 include ':network_tools'
-include ':database_utils'
 include ':library_tools'
 include ':maps_geo_tools'
