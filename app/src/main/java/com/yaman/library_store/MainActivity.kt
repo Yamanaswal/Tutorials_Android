@@ -14,6 +14,7 @@ import com.yaman.library_store.room_db.RoomDatabaseBuilder
 import com.yaman.library_store.room_db.User
 import com.yaman.library_store.room_db.User2
 import com.yaman.library_tools.app_utils.core_utils.LogUtils
+import com.yaman.library_tools.app_utils.pickers.DatePickerMaterial
 import com.yaman.library_tools.app_utils.pickers.TimePickerMaterial
 import kotlinx.coroutines.*
 
@@ -76,11 +77,18 @@ class MainActivity : AppCompatActivity() {
         LogUtils.e("TAG", "MESSAGE")
 
         binding.openDialog.setOnClickListener {
-            val timePickerMaterial = TimePickerMaterial(this, inputMode = MaterialTimePicker.INPUT_MODE_CLOCK)
-            { positive, negative ->
-                Log.e("TimePickerMaterial: ", "onCreate: $positive  - $negative " )
+//            val timePickerMaterial = TimePickerMaterial(this, inputMode = MaterialTimePicker.INPUT_MODE_CLOCK)
+//            { positive, negative ->
+//                Log.e("TimePickerMaterial: ", "onCreate: $positive  - $negative " )
+//            }
+//            timePickerMaterial.show(supportFragmentManager,"timePickerMaterial")
+
+            val datePickerMaterial = DatePickerMaterial {
+                    positive, negative ->    Log.e("TimePickerMaterial: ", "onCreate: $positive  - $negative " )
+
             }
-            timePickerMaterial.show(supportFragmentManager,"timePickerMaterial")
+
+            datePickerMaterial.show(supportFragmentManager, "timePickerMaterial")
         }
 
 

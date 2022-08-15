@@ -22,7 +22,7 @@ class TimePickerMaterial(
 ) {
 
     private val materialTimePickerBuilder = MaterialTimePicker.Builder()
-    private lateinit var materialTimePicker : MaterialTimePicker
+    private lateinit var materialTimePicker: MaterialTimePicker
     private var clockFormat = TimeFormat.CLOCK_12H
 
     /**
@@ -68,24 +68,28 @@ class TimePickerMaterial(
             LogUtils.e("TimePickerMaterial - show: ", e.localizedMessage?.toString() ?: "Error...")
         }
     }
-    
-    
-    private fun setupCallbacks(){
+
+
+    private fun setupCallbacks() {
         materialTimePicker.addOnPositiveButtonClickListener {
 
-            if(clockFormat == TimeFormat.CLOCK_12H){
-                listener(convertTime24To12("${materialTimePicker.hour}:${materialTimePicker.minute}"),null)
-            }else{
+            if (clockFormat == TimeFormat.CLOCK_12H) {
+                listener(
+                    convertTime24To12("${materialTimePicker.hour}:${materialTimePicker.minute}"),
+                    null
+                )
+            } else {
                 val simpleDateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-                val date = simpleDateFormat.parse("${materialTimePicker.hour}:${materialTimePicker.minute}")
-                listener(simpleDateFormat.format(date!!),null)
+                val date =
+                    simpleDateFormat.parse("${materialTimePicker.hour}:${materialTimePicker.minute}")
+                listener(simpleDateFormat.format(date!!), null)
             }
 
             materialTimePicker.dismiss()
         }
 
         materialTimePicker.addOnNegativeButtonClickListener {
-            listener("${materialTimePicker.hour}:${materialTimePicker.minute}",null)
+            listener("${materialTimePicker.hour}:${materialTimePicker.minute}", null)
             materialTimePicker.dismiss()
         }
 
