@@ -2,20 +2,14 @@ package com.yaman.library_store
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.format.DateFormat.is24HourFormat
 import android.util.Log
 import androidx.databinding.DataBindingUtil
-import com.google.android.material.timepicker.MaterialTimePicker
-import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_KEYBOARD
-import com.google.android.material.timepicker.TimeFormat
 import com.yaman.library_store.databinding.ActivityMainBinding
 import com.yaman.library_store.realm_db.RealmDb
 import com.yaman.library_store.room_db.RoomDatabaseBuilder
 import com.yaman.library_store.room_db.User
 import com.yaman.library_store.room_db.User2
 import com.yaman.library_tools.app_utils.core_utils.LogUtils
-import com.yaman.library_tools.app_utils.pickers.DatePickerMaterial
-import com.yaman.library_tools.app_utils.pickers.TimePickerMaterial
 import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
@@ -83,12 +77,20 @@ class MainActivity : AppCompatActivity() {
 //            }
 //            timePickerMaterial.show(supportFragmentManager,"timePickerMaterial")
 
-            val datePickerMaterial = DatePickerMaterial {
-                    positive, negative ->    Log.e("TimePickerMaterial: ", "onCreate: $positive  - $negative " )
+//            val datePickerMaterial = DatePickerMaterial {
+//                    positive, negative ->    Log.e("TimePickerMaterial: ", "onCreate: $positive  - $negative " )
+//            }
+//
+//            datePickerMaterial.show(supportFragmentManager, "timePickerMaterial")
 
-            }
+//            val contextView = findViewById<View>(R.id.openDialog)
+//            SnackBarMaterial(view = contextView, "TEST").apply {
+//                this.setAction("Close Button") {
+//                    Log.e("SnackBarMaterial", "setAction: " )
+//                }
+//                this.showLong()
+//            }
 
-            datePickerMaterial.show(supportFragmentManager, "timePickerMaterial")
         }
 
 

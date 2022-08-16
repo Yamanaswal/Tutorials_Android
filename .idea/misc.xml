@@ -15,6 +15,9 @@
         <entry key="library_tools/src/main/res/drawable/camera.xml" value="0.206" />
         <entry key="library_tools/src/main/res/drawable/round_brown_edit_text.xml" value="0.206" />
         <entry key="library_tools/src/main/res/layout/fragment_image_dialog_picker.xml" value="0.21145833333333333" />
+        <entry key="library_tools/src/main/res/layout/progress_indicator_circular.xml" value="0.21041666666666667" />
+        <entry key="library_tools/src/main/res/layout/progress_indicator_circular_center.xml" value="0.21145833333333333" />
+        <entry key="library_tools/src/main/res/layout/progress_indicator_linear_center.xml" value="0.21145833333333333" />
         <entry key="network_tools/src/main/res/drawable/about_us_red.xml" value="0.206" />
         <entry key="network_tools/src/main/res/drawable/button_bg.xml" value="0.206" />
         <entry key="network_tools/src/main/res/drawable/ic_no_wifi.xml" value="0.206" />

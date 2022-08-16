@@ -1,4 +1,4 @@
-package com.yaman.library_tools.app_utils.pickers
+package com.yaman.library_tools.app_utils.ui_utils.camera_gallery_picker
 
 import android.provider.MediaStore
 
