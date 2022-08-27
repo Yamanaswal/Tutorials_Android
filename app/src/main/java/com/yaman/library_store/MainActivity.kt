@@ -1,16 +1,30 @@
 package com.yaman.library_store
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.os.Build
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.yaman.library_store.databinding.ActivityMainBinding
 import com.yaman.library_store.realm_db.RealmDb
 import com.yaman.library_store.room_db.RoomDatabaseBuilder
 import com.yaman.library_store.room_db.User
 import com.yaman.library_store.room_db.User2
+import com.yaman.library_tools.BuildConfig
 import com.yaman.library_tools.app_utils.core_utils.LogUtils
+import com.yaman.library_tools.app_utils.generic_services.ServiceReceiver
 import kotlinx.coroutines.*
+import java.lang.String
+import kotlin.also
+import kotlin.apply
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +34,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         Log.e("TAG", "<<<<<<<<<<<onCreate: MainActivity INIT>>>>>>>>>>>")
+
+        Intent(this, MyService::class.java).also { intent ->
+            startService(intent)
+        }
+
+        Intent(this, MyService::class.java).also { intent ->
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                startService(intent)
+            }
+        }
+
+        registerReceiver(ServiceReceiver {
+
+            // Get extra data included in the Intent
+            val message = it?.getBooleanExtra("Status", false)
+            val location = it?.getStringExtra("Location")
+
+            Log.e("mMessageReceiver- ", "onReceive: $message -> $location")
+
+        }, IntentFilter("GPSLocationUpdates"))
 
         CoroutineScope(Dispatchers.IO).launch {
 
@@ -66,7 +100,7 @@ class MainActivity : AppCompatActivity() {
 
 
         // LOG INIT.
-        LogUtils.isDebuggable = BuildConfig.LOG_DEBUG_MODE
+        LogUtils.isDebuggable = BuildConfig.DEBUG
         // LOG USE.
         LogUtils.e("TAG", "MESSAGE")
 
@@ -94,6 +128,17 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        binding.editTextId.doOnTextChanged { text, start, before, count ->
+            Log.e("doOnTextChanged: ", "onCreate: $text")
+        }
+
+//        binding.closeDialog.updateLayoutParams {
+//            height = 200
+//            width = 200
+//        }
+
     }
+
+
 
 }

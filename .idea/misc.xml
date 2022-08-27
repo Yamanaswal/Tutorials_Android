@@ -9,9 +9,11 @@
         <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/layout/custom_progress_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Yaman/AndroidStudioProjects/Library_Store/progress_dialog/src/main/res/layout/progress_item.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_recycler_acitivity.xml" value="0.1" />
         <entry key="app/src/main/res/layout/data_item.xml" value="0.21041666666666667" />
+        <entry key="app/src/main/res/layout/sample_my_view.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/layout/ui_component_resizable_layout.xml" value="0.1" />
         <entry key="library_tools/src/main/res/drawable/camera.xml" value="0.206" />
         <entry key="library_tools/src/main/res/drawable/round_brown_edit_text.xml" value="0.206" />
         <entry key="library_tools/src/main/res/layout/fragment_image_dialog_picker.xml" value="0.21145833333333333" />

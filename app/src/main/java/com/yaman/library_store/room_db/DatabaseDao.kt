@@ -26,6 +26,8 @@ interface DatabaseDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg users: User)
 
+
+
 }
 
 

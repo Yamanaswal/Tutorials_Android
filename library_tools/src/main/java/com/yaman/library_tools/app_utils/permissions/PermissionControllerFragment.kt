@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.core.content.ContextCompat
 
+
 abstract class BasePermissionManager : Fragment() {
 
     private val rationalRequest = mutableMapOf<Int, Boolean>()
