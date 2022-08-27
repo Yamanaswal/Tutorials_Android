@@ -1,17 +1,13 @@
 package com.yaman.library_store
 
-import android.content.BroadcastReceiver
-import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Build
 import android.os.Bundle
-import android.os.Parcelable
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.yaman.library_store.databinding.ActivityMainBinding
 import com.yaman.library_store.realm_db.RealmDb
 import com.yaman.library_store.room_db.RoomDatabaseBuilder
@@ -21,14 +17,13 @@ import com.yaman.library_tools.BuildConfig
 import com.yaman.library_tools.app_utils.core_utils.LogUtils
 import com.yaman.library_tools.app_utils.generic_services.ServiceReceiver
 import kotlinx.coroutines.*
-import java.lang.String
 import kotlin.also
 import kotlin.apply
 
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         Intent(this, MyService::class.java).also { intent ->
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                startService(intent)
+                startForegroundService(intent)
             }
         }
 
@@ -54,6 +49,7 @@ class MainActivity : AppCompatActivity() {
             Log.e("mMessageReceiver- ", "onReceive: $message -> $location")
 
         }, IntentFilter("GPSLocationUpdates"))
+
 
         CoroutineScope(Dispatchers.IO).launch {
 

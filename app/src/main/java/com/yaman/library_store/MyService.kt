@@ -9,7 +9,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
-class MyService : GenericService(serviceType = START_STICKY) {
+class MyService : GenericService(serviceType = START_STICKY, true) {
 
     override fun onServiceStart(intent: Intent?, flags: Int, startId: Int) {
 

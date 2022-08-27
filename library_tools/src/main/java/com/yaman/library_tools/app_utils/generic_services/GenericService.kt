@@ -1,16 +1,28 @@
 package com.yaman.library_tools.app_utils.generic_services
 
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.app.Service
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.os.IBinder
 import android.util.Log
+import androidx.annotation.RequiresApi
+import androidx.core.app.NotificationCompat
+import com.yaman.library_tools.R
 import com.yaman.library_tools.app_utils.core_utils.LogUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-abstract class GenericService(private val serviceType: Int = START_NOT_STICKY) : Service() {
+abstract class GenericService(
+    private val serviceType: Int = START_NOT_STICKY,
+    private val showNotification: Boolean = true,
+) : Service() {
 
     abstract fun onServiceStart(intent: Intent?, flags: Int, startId: Int)
 
@@ -22,6 +34,7 @@ abstract class GenericService(private val serviceType: Int = START_NOT_STICKY) :
             Log.e(_TAG, "onStartCommand: flags: $flags")
             Log.e(_TAG, "onStartCommand: startId: $startId")
             onServiceStart(intent, flags, startId)
+            startForeground()
         }
 
         return serviceType
@@ -63,6 +76,64 @@ abstract class GenericService(private val serviceType: Int = START_NOT_STICKY) :
         } else {
             Log.e("setServiceData: ", "intentName is an null object.")
         }
+    }
+
+    fun startForeground() {
+
+        if (showNotification) {
+            val channelId = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                createNotificationChannel()
+            } else {
+                // If earlier version channel ID is not used
+                // https://developer.android.com/reference/android/support/v4/app/NotificationCompat.Builder.html#NotificationCompat.Builder(android.content.Context)
+                ""
+            }
+
+            val notificationBuilder = NotificationCompat.Builder(this, channelId)
+            val notification = notificationBuilder
+                .setOngoing(true)
+                .setPriority(NotificationCompat.PRIORITY_MIN)
+                .setCategory(Notification.CATEGORY_SERVICE)
+
+            val notificationBuild = notification.build()
+            startForeground(101, notificationBuild)
+        }
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun createNotificationChannel(
+        default: Boolean = true,
+        notificationChannel: NotificationChannel? = null
+    ): String {
+
+        val channelId = "channel_id"
+
+        if (default) {
+            val channelName = "Foreground Service"
+
+            val channel = NotificationChannel(
+                channelId,
+                channelName,
+                NotificationManager.IMPORTANCE_HIGH,
+            )
+
+            channel.lockscreenVisibility = Notification.VISIBILITY_PRIVATE
+
+            val service = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            service.createNotificationChannel(channel)
+
+            return channelId
+        } else {
+
+            val service = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            if (notificationChannel != null) {
+                service.createNotificationChannel(notificationChannel)
+            }
+
+            return channelId
+        }
+
     }
 
 
