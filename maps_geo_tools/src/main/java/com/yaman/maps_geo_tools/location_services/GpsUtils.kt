@@ -28,7 +28,7 @@ class GpsUtils(private val context: Context) {
     private var mSettingsClient: SettingsClient? = null
     private var mLocationSettingsRequest: LocationSettingsRequest
     private var locationManager: LocationManager? = null
-    private lateinit var locationRequest: LocationRequest
+    private var locationRequest: LocationRequest
 
     init {
         locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager

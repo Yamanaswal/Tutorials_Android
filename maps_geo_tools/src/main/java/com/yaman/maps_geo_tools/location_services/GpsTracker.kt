@@ -96,6 +96,7 @@ class GPSTracker(private val mContext: Context) : Service(), LocationListener {
      * Stop using GPS listener
      * Calling this function will stop using GPS in your app
      */
+    @SuppressLint("MissingPermission")
     fun stopUsingGPS() {
         if (locationManager != null) {
             locationManager!!.removeUpdates(this@GPSTracker)
