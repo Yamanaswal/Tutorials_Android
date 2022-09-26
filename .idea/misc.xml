@@ -15,7 +15,9 @@
         <entry key="app/src/main/res/layout/sample_my_view.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/ui_component_resizable_layout.xml" value="0.1" />
         <entry key="library_tools/src/main/res/drawable/camera.xml" value="0.206" />
+        <entry key="library_tools/src/main/res/drawable/pv_invisible_image.xml" value="0.1" />
         <entry key="library_tools/src/main/res/drawable/round_brown_edit_text.xml" value="0.206" />
+        <entry key="library_tools/src/main/res/drawable/sample_background.xml" value="0.128" />
         <entry key="library_tools/src/main/res/layout/fragment_image_dialog_picker.xml" value="0.21145833333333333" />
         <entry key="library_tools/src/main/res/layout/progress_indicator_circular.xml" value="0.21041666666666667" />
         <entry key="library_tools/src/main/res/layout/progress_indicator_circular_center.xml" value="0.21145833333333333" />

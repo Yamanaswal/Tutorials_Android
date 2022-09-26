@@ -26,6 +26,11 @@ interface DatabaseDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg users: User)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll2(vararg users: User)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll3(vararg users: User)
 
 
 }

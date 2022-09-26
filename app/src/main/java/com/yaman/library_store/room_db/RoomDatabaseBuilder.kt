@@ -12,9 +12,7 @@ object RoomDatabaseBuilder {
         return Room.databaseBuilder(
             context,
             AppDatabase::class.java, databaseName
-        )
-            .fallbackToDestructiveMigration()
-            .build()
+        ).fallbackToDestructiveMigration().build()
     }
 
 }

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,11 +32,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:hint="Type Here."
             android:id="@+id/editTextId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:hint="Type Here."
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/closeDialog" />
@@ -52,6 +51,18 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.yaman.library_tools.app_utils.pinView.Pinview
+            android:id="@+id/pinView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:pinLength="4"
+            app:pinBackground="@drawable/round_brown_edit_text"
+            app:pinItemSelectedBackground="@drawable/round_bg_blue"
+            app:pinItemUnSelectedBackground="@drawable/round_brown_edit_text"
+            app:inputType="number"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/openRV" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
