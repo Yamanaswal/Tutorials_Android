@@ -141,7 +141,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.closeDialog.setOnClickListener {
           binding.pinView.clearValue()
-          binding.pinView.clearFocus()
+          binding.pinView.requestFocus()
         }
 
     }

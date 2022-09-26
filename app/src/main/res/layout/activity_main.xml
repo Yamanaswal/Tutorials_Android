@@ -56,6 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:pinLength="4"
+            app:cursorVisible="true"
             app:pinBackground="@drawable/round_brown_edit_text"
             app:pinItemSelectedBackground="@drawable/round_bg_blue"
             app:pinItemUnSelectedBackground="@drawable/round_brown_edit_text"
