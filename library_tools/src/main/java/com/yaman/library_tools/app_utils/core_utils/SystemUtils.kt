@@ -72,7 +72,6 @@ object SystemUtils {
         }
     }
 
-
     /**  Close Keyboard (binding.getRoot().getWindowToken() => windowToken) **/
     fun closeKeyboard(context: Context, windowToken: IBinder) {
         val inputMethodManager =

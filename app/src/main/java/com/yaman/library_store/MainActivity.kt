@@ -1,26 +1,20 @@
 package com.yaman.library_store
 
-import android.content.Intent
-import android.content.IntentFilter
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
+import com.google.android.material.snackbar.Snackbar
 import com.yaman.library_store.databinding.ActivityMainBinding
-import com.yaman.library_store.realm_db.RealmDb
-import com.yaman.library_store.room_db.RoomDatabaseBuilder
-import com.yaman.library_store.room_db.User
-import com.yaman.library_store.room_db.User2
 import com.yaman.library_tools.BuildConfig
 import com.yaman.library_tools.app_utils.core_utils.LogUtils
-import com.yaman.library_tools.app_utils.generic_services.ServiceReceiver
 import com.yaman.library_tools.app_utils.pinView.Pinview
-import kotlinx.coroutines.*
-import kotlin.also
-import kotlin.apply
-
+import com.yaman.library_tools.app_utils.snackbar_custom.SnackBarCustom
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {
 
@@ -94,15 +88,31 @@ class MainActivity : AppCompatActivity() {
 //
 //        }
 
+//        lifecycleScope.launch(Dispatchers.Default)
+
 
         // LOG INIT.
         LogUtils.isDebuggable = BuildConfig.DEBUG
 
+
         // LOG USE.
         LogUtils.e("TAG", "MESSAGE")
 
+        runBlocking {
+
+        }
+
         binding.openDialog.setOnClickListener {
-//            val timePickerMaterial = TimePickerMaterial(this, inputMode = MaterialTimePicker.INPUT_MODE_CLOCK)
+
+            SnackBarCustom.Builder(it, "SHOW TEXT...")
+                .setDuration(Snackbar.LENGTH_SHORT)
+                .show()
+                .setActionByName("Action") {
+
+                }
+
+
+            //            val timePickerMaterial = TimePickerMaterial(this, inputMode = MaterialTimePicker.INPUT_MODE_CLOCK)
 //            { positive, negative ->
 //                Log.e("TimePickerMaterial: ", "onCreate: $positive  - $negative " )
 //            }
@@ -124,14 +134,14 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        binding.pinView.setPinViewEventListener(object : Pinview.PinViewEventListener{
+        binding.pinView.setPinViewEventListener(object : Pinview.PinViewEventListener {
             override fun onDataEntered(pinview: Pinview?, fromUser: Boolean) {
-                Log.e("fromUser: ", "onDataEntered: $fromUser" )
-                Log.e("Pinview: ", "onDataEntered: ${pinview?.value}" )
+                Log.e("fromUser: ", "onDataEntered: $fromUser")
+                Log.e("Pinview: ", "onDataEntered: ${pinview?.value}")
             }
 
             override fun onPinChange(pinview: Pinview?) {
-                Log.e("Pinview: ", "onPinChange: ${pinview?.value}" )
+                Log.e("Pinview: ", "onPinChange: ${pinview?.value}")
             }
         })
 
@@ -140,12 +150,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.closeDialog.setOnClickListener {
-          binding.pinView.clearValue()
-          binding.pinView.requestFocus()
+            binding.pinView.clearValue()
+            binding.pinView.requestFocus()
         }
 
     }
-
 
 
 }
