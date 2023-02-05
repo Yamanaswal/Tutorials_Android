@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yaman.network_tools.global_apis.models.VerifyOtp
-import com.yaman.network_tools.global_apis.retrofit.ApiResponse
-import com.yaman.network_tools.global_apis.retrofit.ERROR
-import com.yaman.network_tools.global_apis.retrofit.MainRepos
+import com.yaman.network_tools.global_apis.models.ApiResponse
+import com.yaman.network_tools.global_apis.repos.ERROR
+import com.yaman.network_tools.global_apis.repos.MainRepos
 import kotlinx.coroutines.launch
 
 class Smg91ViewModel : ViewModel() {

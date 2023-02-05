@@ -8,7 +8,15 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Library_Store"
 include ':app'
-include ':progress_dialog'
 include ':network_tools'
 include ':library_tools'
-include ':maps_geo_tools'
+include ':network_tools'
+/* Network Http Clients Modules*/
+include 'retrofit'
+include 'socket'
+/* UI Components Modules */
+include ':dialogs'
+/* Database Modules */
+include ':realm'
+/* Pagination Modules */
+include ':paging'

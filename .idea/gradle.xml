@@ -11,10 +11,13 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/dialogs" />
             <option value="$PROJECT_DIR$/library_tools" />
-            <option value="$PROJECT_DIR$/maps_geo_tools" />
             <option value="$PROJECT_DIR$/network_tools" />
-            <option value="$PROJECT_DIR$/progress_dialog" />
+            <option value="$PROJECT_DIR$/paging" />
+            <option value="$PROJECT_DIR$/realm" />
+            <option value="$PROJECT_DIR$/retrofit" />
+            <option value="$PROJECT_DIR$/socket" />
           </set>
         </option>
       </GradleProjectSettings>

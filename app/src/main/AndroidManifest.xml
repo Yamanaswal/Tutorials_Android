@@ -27,10 +27,9 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name=".MyService"
-            android:description="@string/service_desc"
-            android:exported="false" />
+<!--        <service-->
+<!--            android:name=".MyService"-->
+<!--            android:exported="false" />-->
 
     </application>
 

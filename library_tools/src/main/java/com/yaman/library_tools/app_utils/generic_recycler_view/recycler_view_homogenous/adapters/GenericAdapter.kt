@@ -41,14 +41,14 @@ abstract class GenericAdapter<T : Any>(@LayoutRes val layoutId: Int) :
     fun updateList(list: MutableList<T>) {
         items.clear()
         items.addAll(list)
-        notifyDataSetChanged()
+//        notifyDataSetChanged() // DiffUtils
     }
 
     fun addMoreList(list: MutableList<T>) {
         val currentSize = this.items.size
         this.items.addAll(list)
         val newSize = this.items.size
-        notifyItemRangeChanged(currentSize, newSize)
+//        notifyItemRangeChanged(currentSize, newSize) // DiffUtils
     }
 
     override fun getItem(position: Int): T {
