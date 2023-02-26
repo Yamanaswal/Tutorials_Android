@@ -1,3 +1,5 @@
+package com.yaman.library_tools.app_utils.generic_recycler_view.recycler_view_homogenous.adapters
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
