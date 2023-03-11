@@ -8,4 +8,8 @@ class MyApplication : Application() {
         super.onCreate()
 //        Realm.init(this)
     }
+
+
+
+
 }

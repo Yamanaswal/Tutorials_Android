@@ -51,6 +51,9 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
 
+    /** Leak Canary - Memory leaks Detection Library. */
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
+
 /*    //Hilt
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-compiler:2.44"
