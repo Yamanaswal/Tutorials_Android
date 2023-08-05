@@ -9,4 +9,11 @@ object RetrofitConvertors {
             GsonBuilder().setLenient().create()
         )
     }
+
+//    fun getGsonConvertor(): Sca {
+//        return GsonConverterFactory.create(
+//            GsonBuilder().setLenient().create()
+//        )
+//    }
+
 }
