@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.yaman.dependency_injection_using_hilt_android.R
+import com.yaman.dependency_injection_using_hilt_android.data.LoggerDataSource
 import com.yaman.dependency_injection_using_hilt_android.data.LoggerLocalDataSource
+import com.yaman.dependency_injection_using_hilt_android.di.InMemoryLogger
 import com.yaman.dependency_injection_using_hilt_android.navigator.AppNavigator
 import com.yaman.dependency_injection_using_hilt_android.navigator.Screens
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,8 +22,15 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ButtonsFragment : Fragment() {
 
-    @Inject lateinit var logger: LoggerLocalDataSource
-    @Inject lateinit var navigator: AppNavigator
+/*    @Inject
+    lateinit var logger: LoggerLocalDataSource*/
+
+    @InMemoryLogger
+    @Inject
+    lateinit var logger: LoggerDataSource
+
+    @Inject
+    lateinit var navigator: AppNavigator
 
     /* Without DI */
     /*private lateinit var logger: LoggerLocalDataSource
@@ -37,17 +46,17 @@ class ButtonsFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-/*
-        populateFields(context)*/
+        /*
+                populateFields(context)*/
     }
 
-/*    private fun populateFields(context: Context) {
-        logger = (context.applicationContext as LogApplication).serviceLocator.loggerLocalDataSource
+    /*    private fun populateFields(context: Context) {
+            logger = (context.applicationContext as LogApplication).serviceLocator.loggerLocalDataSource
 
-        navigator = (context.applicationContext as LogApplication).serviceLocator.provideNavigator(
-            requireActivity()
-        )
-    }*/
+            navigator = (context.applicationContext as LogApplication).serviceLocator.provideNavigator(
+                requireActivity()
+            )
+        }*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         view.findViewById<Button>(R.id.button1).setOnClickListener {

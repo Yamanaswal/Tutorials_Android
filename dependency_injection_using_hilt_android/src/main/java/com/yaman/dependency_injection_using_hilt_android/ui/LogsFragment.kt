@@ -13,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.yaman.dependency_injection_using_hilt_android.LogApplication
 import com.yaman.dependency_injection_using_hilt_android.R
 import com.yaman.dependency_injection_using_hilt_android.data.Log
+import com.yaman.dependency_injection_using_hilt_android.data.LoggerDataSource
 import com.yaman.dependency_injection_using_hilt_android.data.LoggerLocalDataSource
+import com.yaman.dependency_injection_using_hilt_android.di.InMemoryLogger
 import com.yaman.dependency_injection_using_hilt_android.util.DateFormatter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -24,8 +26,12 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class LogsFragment : Fragment() {
 
+/*    @Inject
+    lateinit var logger: LoggerLocalDataSource*/
+
+    @InMemoryLogger
     @Inject
-    lateinit var logger: LoggerLocalDataSource
+    lateinit var logger: LoggerDataSource
 
     @Inject
     lateinit var dateFormatter: DateFormatter
