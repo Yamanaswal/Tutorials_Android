@@ -19,7 +19,6 @@ import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 import com.yaman.library_tools.R
-import com.yaman.library_tools.app_utils.core_utils.LogUtils
 import java.util.*
 import kotlin.math.max
 

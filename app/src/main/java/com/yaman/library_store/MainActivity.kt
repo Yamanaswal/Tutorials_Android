@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import com.yaman.library_store.databinding.ActivityMainBinding
-import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         Log.e("TAG", "<<<<<<<<<<<onCreate: MainActivity INIT>>>>>>>>>>>")
 
-//        Intent(this, MyService::class.java).also { intent ->
+        //        Intent(this, MyService::class.java).also { intent ->
 //            startService(intent)
 //        }
 //

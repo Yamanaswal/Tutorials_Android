@@ -7,17 +7,12 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="jbr-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/dialogs" />
-            <option value="$PROJECT_DIR$/library_tools" />
-            <option value="$PROJECT_DIR$/network_tools" />
-            <option value="$PROJECT_DIR$/paging" />
-            <option value="$PROJECT_DIR$/realm" />
-            <option value="$PROJECT_DIR$/retrofit" />
-            <option value="$PROJECT_DIR$/socket" />
+            <option value="$PROJECT_DIR$/dependency_injection_using_hilt_android" />
           </set>
         </option>
       </GradleProjectSettings>

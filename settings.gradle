@@ -3,20 +3,14 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
-rootProject.name = "Library_Store"
+rootProject.name = "Tutorials_Android"
 include ':app'
-include ':network_tools'
-include ':library_tools'
-include ':network_tools'
-/* Network Http Clients Modules*/
-include 'retrofit'
-include 'socket'
-/* UI Components Modules */
-include ':dialogs'
-/* Database Modules */
-include ':realm'
-/* Pagination Modules */
-include ':paging'
+include ':dependency_injection_using_hilt_android'
+//include ':network_tools'
+//include ':library_tools'
+//include ':network_tools'
+//include ':dialogs'
