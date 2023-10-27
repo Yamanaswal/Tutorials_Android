@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/dependency_injection_using_hilt_android" />
+            <option value="$PROJECT_DIR$/jetpackpractice" />
           </set>
         </option>
       </GradleProjectSettings>
