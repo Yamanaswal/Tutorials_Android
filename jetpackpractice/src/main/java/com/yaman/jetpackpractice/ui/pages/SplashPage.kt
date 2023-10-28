@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.yaman.jetpackpractice.R
-import com.yaman.jetpackpractice.ui.Routes
+import com.yaman.jetpackpractice.ui.routes.Routes
 import com.yaman.jetpackpractice.utils.PrefConstants
 import com.yaman.jetpackpractice.utils.PreferencesUtil
 import kotlinx.coroutines.delay
@@ -57,7 +57,7 @@ fun SplashPage(
             )
 
             // Customize the delay time
-            delay(4000L)
+            delay(2000L)
 
             if (isUserLogin) {
                 navController.popBackStack()
