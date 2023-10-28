@@ -10,6 +10,8 @@ import com.yaman.dependency_injection_using_hilt_android.navigator.AppNavigator
 import com.yaman.dependency_injection_using_hilt_android.navigator.AppNavigatorImpl
 import com.yaman.dependency_injection_using_hilt_android.util.DateFormatter
 
+
+/* /* Without DI */ */
 class ServiceLocator(applicationContext: Context) {
 
     private val logsDatabase = Room.databaseBuilder(
