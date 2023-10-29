@@ -4,13 +4,9 @@ package com.yaman.jetpackpractice.utils;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Base64;
-
-import com.google.gson.Gson;
 import com.yaman.jetpackpractice.BuildConfig;
-import com.yaman.jetpackpractice.data.models.User;
-import com.yaman.jetpackpractice.data.remote.API;
-
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
@@ -21,6 +17,11 @@ public class AES {
     public static String strArrayKey = "MTA5MCMj1090##JSFGKiZeJClfKiUzZiZCKw==XWc7dnMnMmFs";
     public static String strArrayvector = "MTA5MCMj1090##IyokREp2eXcydyUhXy0kQA==XWc7dnMnMmFs";
     private static int CIPHER_KEY_LEN = 16; //128 bits
+    public static String strArrayKeyDownloadV2 = "MTA5MDkwMTAjIw==c2w7NDYkJzsq10909010##ZyYnOy5Ic2Y0N15AO31bMCg4N2onNyY4XmpJJzooOCwuS2h0JTY0R2Y=MTA5MDkwMTAjIw==";
+    //public static String strArrayKeyDownloadV2 = "MTA5MCMj1090##c1sncjU0aydzLiwyW3MnZjBhL3c0NTs=XWc7dnMnMmFs";
+    public static String strArrayKeyDownload = "MTA5MCMj1090##YUh9NXNbezsnPiwkMiZ2Ow==XWc7dnMnMmFs";
+    public static String strArrayvectorDownload = "MTA5MCMj1090##aTtHfSdodCNkKm86Jy8lZg==XWc7dnMnMmFs";
+
     public static String strArrayKeyLib = "!*@#)($^%1fgv&C=";
     public static String strArrayvectorLib = "?\\:><{}@#Vjekl/4";
 
@@ -115,11 +116,10 @@ public class AES {
     public static String generatekeyAPI(Context context) {
         String finalKey = "";
         String parts;
-        User user = new Gson().fromJson(PreferencesUtil.INSTANCE.getStringPreference(context,PrefConstants.USER_DATA), User.class);
-        if (user != null && !TextUtils.isEmpty(user.getId())) {
-            parts = (user.getId() + BuildConfig.API_TOKEN).substring(0, 16);
+        if (Helper.INSTANCE.getUserData(context) != null && !TextUtils.isEmpty(Objects.requireNonNull(Helper.INSTANCE.getUserData(context)).getId())) {
+            parts = (Objects.requireNonNull(Helper.INSTANCE.getUserData(context)).getId() + BuildConfig.API_TOKEN ).substring(0, 16);
         } else {
-            parts = ("0" + BuildConfig.API_TOKEN).substring(0, 16);
+            parts = ("0" + BuildConfig.API_TOKEN + "_" + BuildConfig.API_ID).substring(0, 16);
         }
         for (char c : parts.toCharArray()) {
             finalKey = finalKey + AES.encryptPassword(AES.strArrayKey).toCharArray()[Integer.parseInt(String.valueOf(c))];
@@ -130,16 +130,16 @@ public class AES {
     public static String generateVectorAPI(Context context) {
         String finalKey = "";
         String parts;
-        User user = new Gson().fromJson(PreferencesUtil.INSTANCE.getStringPreference(context,PrefConstants.USER_DATA), User.class);
-        if (user != null && !TextUtils.isEmpty(user.getId())) {
-            parts = (user.getId() + BuildConfig.API_TOKEN).substring(0, 16);
+        if (Helper.INSTANCE.getUserData(context) != null && !TextUtils.isEmpty(Objects.requireNonNull(Helper.INSTANCE.getUserData(context)).getId())) {
+            parts = (Objects.requireNonNull(Helper.INSTANCE.getUserData(context)).getId() + BuildConfig.API_TOKEN ).substring(0, 16);
         } else {
-            parts = ("0" + BuildConfig.API_TOKEN).substring(0, 16);
+            parts = ("0" + BuildConfig.API_TOKEN + "_" + BuildConfig.API_ID).substring(0, 16);
         }
         for (char c : parts.toCharArray()) {
             finalKey = finalKey + AES.encryptPassword(AES.strArrayvector).toCharArray()[Integer.parseInt(String.valueOf(c))];
         }
         return finalKey;
+
     }
 
     public static String generateLibkeyAPI(String token) {

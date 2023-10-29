@@ -1,4 +1,18 @@
-package com.yaman.jetpackpractice.data.models
+package com.yaman.jetpackpractice.data.models.user
+
+import com.yaman.jetpackpractice.data.models.BaseResponse
+
+
+class UserResponse(
+    override var status: Boolean = false,
+    override var message: String = "",
+    override var time: Int = 0,
+    override var interval: Int = 0,
+    override var limit: Int = 0,
+    override var cdTime: Int = 0
+) : BaseResponse {
+
+}
 
 class User {
     var creationTime: String? = null

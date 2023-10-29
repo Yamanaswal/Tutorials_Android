@@ -22,13 +22,13 @@ fun ForgotPasswordPage(
         modifier = Modifier
             .fillMaxSize(),
     ) {
-        Text(text = "Home Page..")
+        Text(text = "HIII")
     }
 }
 
 
 @Preview(showBackground = true)
 @Composable
-fun ForgotPasswordPagePreview() {
+fun ForgotPasswordPreview() {
     ForgotPasswordPage()
 }

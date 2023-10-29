@@ -2,7 +2,6 @@ package com.yaman.jetpackpractice.ui.pages
 
 import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
@@ -17,7 +16,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -29,10 +27,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -45,6 +40,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.yaman.jetpackpractice.R
 import com.yaman.jetpackpractice.ui.components.LoginAppBar
+import com.yaman.jetpackpractice.ui.routes.Routes
 import com.yaman.jetpackpractice.view_model.LoginViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -63,8 +59,8 @@ fun LoginPage(
     var showMobileField by rememberSaveable { mutableStateOf(true) }
     val maxLengthMobileNumber = 10
     var loginTypeMsg by rememberSaveable { mutableStateOf("Login with email") }
-    val viewModel: LoginViewModel = viewModel()
-    val data by viewModel.loginResponse.observeAsState()
+    val loginViewModel: LoginViewModel = viewModel()
+    val loginRes by loginViewModel.loginResponse.observeAsState()
 
 
     Column(
@@ -155,13 +151,13 @@ fun LoginPage(
                     indication = null, // This is mandatory stop ripple effect
                     interactionSource = remember { MutableInteractionSource() } // This is mandatory stop ripple effect
                 ) {
-                    Toast
-                        .makeText(context, "CLicked Here...", Toast.LENGTH_SHORT)
-                        .show()
+                    navController.navigate(Routes.FORGOT_PASSWORD)
                 }
         )
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {
+                      loginViewModel.loginApiCall(context)
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(start = 12.dp, end = 12.dp, top = 20.dp, bottom = 20.dp),

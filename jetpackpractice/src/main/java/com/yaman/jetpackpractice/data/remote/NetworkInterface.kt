@@ -1,6 +1,7 @@
 package com.yaman.jetpackpractice.data.remote
 
 import com.yaman.jetpackpractice.BuildConfig
+import com.yaman.jetpackpractice.data.models.BaseResponse
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
