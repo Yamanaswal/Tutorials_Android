@@ -1,4 +1,4 @@
-package com.yaman.jetpackpractice
+package com.yaman.jetpackpractice.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -13,7 +13,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.yaman.jetpackpractice.ui.pages.HomePage
-import com.yaman.jetpackpractice.ui.Routes
+import com.yaman.jetpackpractice.ui.routes.Routes
+import com.yaman.jetpackpractice.ui.pages.ForgotPasswordPage
 import com.yaman.jetpackpractice.ui.pages.LoginPage
 import com.yaman.jetpackpractice.ui.pages.SignUpPage
 import com.yaman.jetpackpractice.ui.pages.SplashPage
@@ -79,6 +80,14 @@ fun Navigation() {
                 color = MaterialTheme.colorScheme.background
             ) {
                 SignUpPage(navController)
+            }
+        }
+        composable(route = Routes.FORGOT_PASSWORD) {
+            Surface(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colorScheme.background
+            ) {
+                ForgotPasswordPage(navController)
             }
         }
     }
