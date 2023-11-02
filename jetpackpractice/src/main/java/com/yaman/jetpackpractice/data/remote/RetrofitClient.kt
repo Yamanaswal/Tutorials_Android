@@ -1,18 +1,27 @@
 package com.yaman.jetpackpractice.data.remote
 
 import android.content.Context
+import android.text.TextUtils
+import android.util.Log
 import com.google.gson.Gson
 import com.yaman.jetpackpractice.BuildConfig
 import com.yaman.jetpackpractice.data.models.user.User
+import com.yaman.jetpackpractice.utils.AES
 import com.yaman.jetpackpractice.utils.Const
 import com.yaman.jetpackpractice.utils.Helper.getVersionCode
 import com.yaman.jetpackpractice.utils.PrefConstants
 import com.yaman.jetpackpractice.utils.PreferencesUtil
 import okhttp3.Interceptor
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.Response
+import okhttp3.ResponseBody
 import okhttp3.logging.HttpLoggingInterceptor
+import org.json.JSONObject
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -43,22 +52,24 @@ object RetrofitClient {
             val requestInterceptor = Interceptor { chain: Interceptor.Chain ->
                 val original = chain.request()
 
-                val requestBuilder: Request = original.newBuilder()
-                    .header(Const.USER_ID, if (user != null) user!!.id ?: "" else "")
+                val requestBuilder: Request.Builder = original.newBuilder()
+                    .header(Const.USER_ID, if (user != null) user!!.id ?: "" else "0")
                     .header(Const.DEVICE_TYPE, "1")
                     .header(Const.JWT, if (user != null) user!!.jwt ?: "" else "")
                     .removeHeader("User-Agent")
                     .addHeader("User-Agent", "okhttp/4.9.1")
-                    .header(Const.LANG, if (user != null) user!!.lang ?: "" else "")
+                    .header(Const.LANG, if (user != null) user!!.lang ?: "1" else "1")
                     .header(Const.VERSION, getVersionCode(context).toString())
-                    .header(Const.AUTHORIZATION, BuildConfig.Bearer + "_" + BuildConfig.API_ID)
-                    .header(Const.APP_ID, BuildConfig.API_ID)
+
+                val request: Request = requestBuilder
+                    .addHeader(Const.AUTHORIZATION, BuildConfig.Bearer + "_" + BuildConfig.API_ID)
+                    .addHeader(Const.APP_ID, BuildConfig.API_ID)
                     .build()
 
-                chain.proceed(requestBuilder)
+                chain.proceed(request)
             }
 
-      /*      //Response Handler
+            //Response Handler
             val responseInterceptor = Interceptor { chain: Interceptor.Chain ->
 
                 Log.i("", "===============DECRYPTING RESPONSE===============")
@@ -78,22 +89,24 @@ object RetrofitClient {
                     )
 
                     Log.i("Response string => %s", decryptedString)
-                    val jsonObject = JSONObject(decryptedString)
 
                 } catch (e: Exception) {
                     decryptedString = originalResponse.body!!.toString()
                 }
 
+                // Rebuild the response with the decrypted body
+                val mediaType: MediaType = contentType?.toMediaTypeOrNull()!!
+                val responseBody: ResponseBody = ResponseBody.create(mediaType, decryptedString!!)
+                newResponse.body(responseBody)
 
                 // Build a new response with the decrypted content
-                originalResponse
+                newResponse.build()
             }
-*/
 
 
             httpClient
                 .addInterceptor(requestInterceptor)
-//                .addInterceptor(responseInterceptor)
+                .addInterceptor(responseInterceptor)
                 .connectTimeout(1, TimeUnit.MINUTES)
                 .readTimeout(1, TimeUnit.MINUTES)
                 .writeTimeout(1, TimeUnit.MINUTES)
@@ -109,6 +122,7 @@ object RetrofitClient {
 
             retrofit = Retrofit.Builder()
                 .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BuildConfig.BASE_URL)
                 .client(httpClient.build())
                 .build()

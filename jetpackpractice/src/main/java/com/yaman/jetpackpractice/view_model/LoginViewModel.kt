@@ -1,6 +1,7 @@
 package com.yaman.jetpackpractice.view_model
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -29,10 +30,12 @@ class LoginViewModel : ViewModel() {
             encryptionData.mobile = "9868700646"
             encryptionData.password = "password"
             encryptionData.device_id = "deviceId"
-            encryptionData.is_social = "true"
+            encryptionData.is_social = "0"
             encryptionData.c_code = "91"
+            encryptionData.device_token = "123124124241"
 
             val response = NetworkService.userLoginAuthentication(context, encryptionData)
+            Log.e("response", "loginApiCall: ${response.message}")
 //            if (response.status) {
 ////                loginResponseMutable.postValue(response.body())
 //            } else {

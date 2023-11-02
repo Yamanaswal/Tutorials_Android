@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -77,7 +78,7 @@ fun SplashPage(
                         .makeText(context, "Image View", Toast.LENGTH_SHORT)
                         .show()
                 },
-            painter = painterResource(id = R.drawable.ic_launcher_background),
+            painter = painterResource(id = R.mipmap.ic_logo_login),
             contentDescription = ""
         )
     }

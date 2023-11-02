@@ -74,14 +74,6 @@ fun Navigation() {
                 SignUpPage(navController)
             }
         }
-        composable(route = Routes.SIGN_UP_PAGE) {
-            Surface(
-                modifier = Modifier.fillMaxSize(),
-                color = MaterialTheme.colorScheme.background
-            ) {
-                SignUpPage(navController)
-            }
-        }
         composable(route = Routes.FORGOT_PASSWORD) {
             Surface(
                 modifier = Modifier.fillMaxSize(),
