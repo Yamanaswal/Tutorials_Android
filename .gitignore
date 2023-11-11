@@ -13,3 +13,9 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+#Node Js
+node_modules/
+config/config.env
+.history/
+
