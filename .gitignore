@@ -16,6 +16,6 @@ local.properties
 
 #Node Js
 node_modules/
-config/config.env
+config.env
 .history/
 
