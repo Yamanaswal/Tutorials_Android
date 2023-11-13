@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const log = require("../helper/helpers/logger");
+const log = require("../../helper/helpers/logger");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");

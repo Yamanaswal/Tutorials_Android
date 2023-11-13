@@ -1,17 +1,20 @@
-const User = require("../models/userModel");
+const User = require("../models/mongo_schemas/userModel");
 const crypto = require("crypto");
 const {
   log,
   jwtUtils,
   AppError,
   EmailService,
-} = require("../helper/base_helpers");
-const { tryCatchAsync } = require("../middleware/base_middlewares");
+} = require("../helper/helper.main");
+const { tryCatchAsync } = require("../middleware/middlewares.main");
+const config = require("../config/config");
+const { signUp } = require("../services/authServiceMysql");
+
 
 exports.signUp = tryCatchAsync(async (req, res, next) => {
-  const newUser = await User.create(req.body);
-  sendTokenResponse(res, newUser);
+  signUp(req, res, next);
 });
+
 
 exports.signUpAdmin = tryCatchAsync(async (req, res, next) => {
   const { name, email, password, passwordConfirm } = req.body;
@@ -26,6 +29,7 @@ exports.signUpAdmin = tryCatchAsync(async (req, res, next) => {
 
   sendTokenResponse(res, newUserAdmin);
 });
+
 
 exports.login = tryCatchAsync(async (req, res, next) => {
   const { email, password } = req.body;
@@ -72,7 +76,7 @@ exports.forgotPassword = tryCatchAsync(async (req, res, next) => {
   try {
     // Background thread. (asynchronous non-blocking operation).
     new EmailService({
-      from: `${user.name}  <${process.env.SENDGRID_EMAIL_ADDRESS}>`,
+      from: `${user.name}  <${config.SENDGRID_EMAIL_ADDRESS}>`,
       to: user.email,
       subject: "Your password reset token has been generated.",
       message: resetUrlMessage,
@@ -202,26 +206,4 @@ const filterObject = (obj, ...allowedFields) => {
   return newObj;
 };
 
-function sendTokenResponse(res, user) {
-  const token = jwtUtils.getJwtSignToken(user._id);
 
-  const cookieOptions = {
-    expires: new Date(
-      Date.now() + process.env.JWT_COOKIE_EXPIRE_TIME * 24 * 60 * 60 * 1000
-    ),
-    secure: true,
-    httpOnly: true,
-  };
-
-  // 4) Set Cookie Production - (Only Works With HTTPS)
-  if (process.env.NODE_ENV === "production") {
-    res.cookie("jwt", token, cookieOptions);
-  }
-
-  res.status(200).json({
-    status: "success",
-    statusCode: 200,
-    token: token,
-    data: user ?? {},
-  });
-}

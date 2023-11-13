@@ -1,5 +1,5 @@
-const { log, AppError, jwtUtils } = require("../../helper/base_helpers");
-const User = require("../../models/userModel");
+const { log, AppError, jwtUtils } = require("../../helper/helper.main");
+const User = require("../../models/mongo_schemas/userModel");
 const tryCatchAsync = require("./try_catch_handler");
 
 ///

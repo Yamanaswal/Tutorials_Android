@@ -1,9 +1,10 @@
 /*****************************************************************
 CUSTOMIZE - CONSOLE LOG WITH COLORS.
 *****************************************************************/
+const config = require("../../config/config");
 
 function log(...message) {
-  if (process.env.NODE_ENV === "development") {
+  if (config.NODE_ENV === "development") {
     console.log(message);
   }
 }

@@ -1,13 +1,13 @@
-const Review = require("./../models/reviewModel");
+const Review = require("../models/mongo_schemas/reviewModel");
 
 const {
   log,
   jwtUtils,
   AppError,
   sendEmail,
-} = require("../helper/base_helpers");
+} = require("../helper/helper.main");
 
-const { tryCatchAsync } = require("../middleware/base_middlewares");
+const { tryCatchAsync } = require("../middleware/middlewares.main");
 
 exports.getAllReviews = tryCatchAsync(async (req, res, next) => {
   const review = await Review.find({}).populate({

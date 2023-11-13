@@ -1,4 +1,5 @@
-const { log, AppError } = require("../../helper/base_helpers");
+const config = require("../../config/config");
+const { log, AppError } = require("../../helper/helper.main");
 
 const globalErrorHandler = (err, req, res, next) => {
   log("globalErrorHandler");
@@ -16,9 +17,9 @@ const globalErrorHandler = (err, req, res, next) => {
   if (error.name === "JsonWebTokenError") error = handleJwtError();
   if (error.name === "TokenExpiredError") error = handleJwtTokenExpiredError();
 
-  if (process.env.NODE_ENV === "development") {
+  if (config.NODE_ENV === "development") {
     sendErrorDev(error, res);
-  } else if (process.env.NODE_ENV === "production") {
+  } else if (config.NODE_ENV === "production") {
     sendErrorProd(error, res);
   }
 };

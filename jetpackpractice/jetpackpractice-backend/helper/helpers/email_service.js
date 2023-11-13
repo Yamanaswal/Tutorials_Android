@@ -2,6 +2,7 @@ const nodemailer = require("nodemailer");
 const pug = require("pug");
 const { htmlToText } = require("html-to-text");
 const log = require("./logger");
+const config = require("../../config/config");
 
 module.exports = class EmailService {
   constructor(options) {
@@ -9,23 +10,23 @@ module.exports = class EmailService {
   }
 
   _newTransport() {
-    if (process.env.NODE_ENV === "development") {
+    if (config.NODE_ENV === "development") {
       // Mailtrap Service.
       return nodemailer.createTransport({
-        host: process.env.MAILTRAP_EMAIL_HOST,
-        port: process.env.MAILTRAP_EMAIL_PORT,
+        host: config.MAILTRAP_EMAIL_HOST,
+        port: config.MAILTRAP_EMAIL_PORT,
         auth: {
-          user: process.env.MAILTRAP_EMAIL_USERNAME,
-          pass: process.env.MAILTRAP_EMAIL_PASSWORD,
+          user: config.MAILTRAP_EMAIL_USERNAME,
+          pass: config.MAILTRAP_EMAIL_PASSWORD,
         },
       });
-    } else if (process.env.NODE_ENV === "production") {
+    } else if (config.NODE_ENV === "production") {
       // SendGrid Service.
       return nodemailer.createTransport({
           service: 'SendGrid',
           auth: {
-            user: process.env.SENDGRID_EMAIL_USERNAME,
-            pass: process.env.SENDGRID_EMAIL_PASSWORD,
+            user: config.SENDGRID_EMAIL_USERNAME,
+            pass: config.SENDGRID_EMAIL_PASSWORD,
           }
       });
     }

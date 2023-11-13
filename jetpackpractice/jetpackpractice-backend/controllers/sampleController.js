@@ -1,6 +1,6 @@
-const Sample = require(".././models/sampleModel");
-const { ApiFeatures, log, AppError } = require("../helper/base_helpers");
-const { tryCatchAsync } = require("../middleware/base_middlewares");
+const Sample = require("../models/mongo_schemas/sampleModel");
+const { ApiFeatures, log, AppError } = require("../helper/helper.main");
+const { tryCatchAsync } = require("../middleware/middlewares.main");
 
 exports.createSample = tryCatchAsync(async (req, res, next) => {
   const sample = await Sample.create(req.body);
