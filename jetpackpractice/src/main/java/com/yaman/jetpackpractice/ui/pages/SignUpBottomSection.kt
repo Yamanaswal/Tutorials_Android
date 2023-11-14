@@ -65,7 +65,7 @@ fun SignUpBottomSection(
     val maxLengthMobileNumber = 10
     var loginTypeMsg by rememberSaveable { mutableStateOf("Login with email") }
     val loginViewModel: LoginViewModel = viewModel()
-    val loginRes by loginViewModel.loginResponse.observeAsState()
+    val loginRes by loginViewModel.loginResponseLiveData.observeAsState()
     val interactionSource = remember { MutableInteractionSource() }
     val tabs = listOf("Login", "Sign Up")
 

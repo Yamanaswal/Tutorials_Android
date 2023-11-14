@@ -7,4 +7,5 @@ class EncryptionData {
     var is_social: String = ""
     var device_token: String = ""
     var c_code: String = ""
+    var email: String = ""
 }

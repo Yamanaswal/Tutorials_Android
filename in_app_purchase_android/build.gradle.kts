@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.yaman.in_app_purchase_android"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.yaman.in_app_purchase_android"
         minSdk = 23
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -44,4 +44,6 @@ dependencies {
 
     implementation ("com.android.billingclient:billing:6.0.1")
     implementation("com.android.billingclient:billing-ktx:6.0.1")
+
+    implementation ("phonepe.intentsdk.android.release:IntentSDK:2.3.0")
 }

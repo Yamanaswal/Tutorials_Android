@@ -31,7 +31,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.yaman.jetpackpractice.R
 import com.yaman.jetpackpractice.ui.components.LoginAppBar
-import com.yaman.jetpackpractice.view_model.LoginViewModel
 
 @Composable
 fun LoginPage(
@@ -47,8 +46,6 @@ fun LoginPage(
     var showEmailField by rememberSaveable { mutableStateOf(false) }
     var showMobileField by rememberSaveable { mutableStateOf(true) }
     val maxLengthMobileNumber = 10
-    val loginViewModel: LoginViewModel = viewModel()
-    val loginRes by loginViewModel.loginResponse.observeAsState()
     val tabs = listOf("Login", "Sign Up")
     var tabIndex by remember { mutableStateOf(0) }
 
@@ -92,7 +89,7 @@ fun LoginPage(
                             Tab(
                                 modifier = Modifier
                                     .background(
-                                        color = colorResource(id = if (tabIndex == 0) R.color.colorPrimary else R.color.white),
+                                        color = colorResource(id = if (tabIndex == 0) R.color.red else R.color.white),
                                         shape = RoundedCornerShape(30.dp)
                                     ),
                                 text = {
@@ -105,7 +102,7 @@ fun LoginPage(
                         else if (index == 1) {
                             Tab(modifier = Modifier
                                 .background(
-                                    color = colorResource(id = if (tabIndex == 1) R.color.colorPrimary else R.color.white),
+                                    color = colorResource(id = if (tabIndex == 1) R.color.red else R.color.white),
                                     shape = RoundedCornerShape(30.dp)
                                 ),
                                 text = {

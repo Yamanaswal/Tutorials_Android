@@ -5,6 +5,8 @@ dependencyResolutionManagement {
         mavenCentral()
         maven { url 'https://jitpack.io' }
         jcenter() // Warning: this repository is going to shut down soon
+        //PhonePe
+        maven { url "https://phonepe.mycloudrepo.io/public/repositories/phonepe-intentsdk-android" }
     }
 }
 rootProject.name = "Tutorials_Android"

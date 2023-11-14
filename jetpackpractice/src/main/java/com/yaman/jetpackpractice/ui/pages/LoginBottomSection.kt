@@ -45,7 +45,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.yaman.jetpackpractice.R
-import com.yaman.jetpackpractice.ui.components.LoginAppBar
+import com.yaman.jetpackpractice.data.models.EncryptionData
 import com.yaman.jetpackpractice.ui.routes.Routes
 import com.yaman.jetpackpractice.view_model.LoginViewModel
 
@@ -66,7 +66,8 @@ fun LoginBottomSection(
     val maxLengthMobileNumber = 10
     var loginTypeMsg by rememberSaveable { mutableStateOf("Login with email") }
     val loginViewModel: LoginViewModel = viewModel()
-    val loginRes by loginViewModel.loginResponse.observeAsState()
+    val loginRes by loginViewModel.loginResponseLiveData.observeAsState()
+    val error by loginViewModel.errorResponseLivedata.observeAsState()
     val interactionSource = remember { MutableInteractionSource() }
 
     Column(
@@ -75,7 +76,7 @@ fun LoginBottomSection(
 
         ) {
 
-        AnimatedVisibility(visible = showEmailField) {
+        AnimatedVisibility(visible = showMobileField) {
             TextField(
                 value = mobile,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
@@ -97,11 +98,11 @@ fun LoginBottomSection(
         }
 
 
-        AnimatedVisibility(visible = showMobileField) {
+        AnimatedVisibility(visible = showEmailField) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 12.dp, end = 12.dp, top = 30.dp, bottom = 12.dp)
+                    .padding(start = 12.dp, end = 12.dp, top = 20.dp, bottom = 12.dp)
                     .background(
                         color = colorResource(id = R.color.app_grey),
                         shape = RoundedCornerShape(30.dp)
@@ -196,7 +197,17 @@ fun LoginBottomSection(
 
         Button(
             onClick = {
-                loginViewModel.loginApiCall(context)
+
+                val encryptionData = EncryptionData()
+                encryptionData.mobile = mobile
+                encryptionData.password = password
+                encryptionData.email = email
+                encryptionData.device_id = "1"
+                encryptionData.is_social = "0"
+                encryptionData.c_code = "91"
+                encryptionData.device_token = "123124124241"
+
+                loginViewModel.loginApiCall(context, encryptionData)
             },
             modifier = Modifier
                 .fillMaxWidth()
