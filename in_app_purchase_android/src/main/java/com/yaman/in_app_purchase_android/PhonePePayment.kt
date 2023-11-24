@@ -14,13 +14,12 @@ import com.phonepe.intent.sdk.api.models.PhonePeEnvironment
 class PhonePePayment : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_phone_pe_payment)
         val string_signature = PhonePe.getPackageSignature()
-        PhonePe.init(this, PhonePeEnvironment.UAT,"PGTESTPAYUAT","")
+        PhonePe.init(this, PhonePeEnvironment.UAT, "PGTESTPAYUAT", "")
 
         try {
 //            PhonePe.setFlowId("Unique Id of the user") // Recommended, not mandatory , An alphanumeric string without any special character
-            val upiApps : List<UPIApplicationInfo>  = PhonePe.getUpiApps()
+            val upiApps: List<UPIApplicationInfo> = PhonePe.getUpiApps()
             upiApps.forEach {
                 Log.e("UPIApplicationInfo: ", "onCreate: " + it.packageName)
             }
@@ -36,8 +35,8 @@ class PhonePePayment : AppCompatActivity() {
 
         //For SDK call below function
         try {
-            startActivityForResult(PhonePe.getImplicitIntent(this, b2BPGRequest, "input package name of upi app to be opened")!!,B2B_PG_REQUEST_CODE)
-        } catch(e: PhonePeInitException){
+            startActivityForResult(PhonePe.getImplicitIntent(this, b2BPGRequest, "input package name of upi app to be opened")!!, B2B_PG_REQUEST_CODE)
+        } catch (e: PhonePeInitException) {
             Log.e("TAG", "onCreate: " + e.localizedMessage)
         }
     }
