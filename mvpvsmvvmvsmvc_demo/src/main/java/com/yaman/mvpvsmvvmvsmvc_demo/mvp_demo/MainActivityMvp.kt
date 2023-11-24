@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.yaman.mvpvsmvvmvsmvc_demo.R
 
-class MainActivityMvp : AppCompatActivity(), MainActivityMvpContract.View {
+class MainActivityMvp : AppCompatActivity() {
     // creating object of TextView class
     private var textView: TextView? = null
 
@@ -33,7 +33,7 @@ class MainActivityMvp : AppCompatActivity(), MainActivityMvpContract.View {
         progressBar = findViewById(R.id.progressBar)
 
         // instantiating object of Presenter Interface
-        presenter = Presenter(this, MainActivityMvpModel())
+        presenter = MainActivityMvpPresenter(mainView, MainActivityMvpModel())
 
         // operations to be performed when
         // user clicks the button
@@ -42,8 +42,20 @@ class MainActivityMvp : AppCompatActivity(), MainActivityMvpContract.View {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
+    private val mainView = object : MainActivityMvpContract.View {
+        override fun showProgress() {
+            progressBar!!.visibility = View.VISIBLE
+            textView!!.visibility = View.INVISIBLE
+        }
+
+        override fun hideProgress() {
+            progressBar!!.visibility = View.GONE
+            textView!!.visibility = View.VISIBLE
+        }
+
+        override fun setString(string: String?) {
+            textView!!.text = string
+        }
     }
 
     override fun onDestroy() {
@@ -51,21 +63,4 @@ class MainActivityMvp : AppCompatActivity(), MainActivityMvpContract.View {
         presenter!!.onDestroy()
     }
 
-    // method to display the Course Detail TextView
-    override fun showProgress() {
-        progressBar!!.visibility = View.VISIBLE
-        textView!!.visibility = View.INVISIBLE
-    }
-
-    // method to hide the Course Detail TextView
-    override fun hideProgress() {
-        progressBar!!.visibility = View.GONE
-        textView!!.visibility = View.VISIBLE
-    }
-
-    // method to set random string
-    // in the Course Detail TextView
-    override fun setString(string: String?) {
-        textView!!.text = string
-    }
 }

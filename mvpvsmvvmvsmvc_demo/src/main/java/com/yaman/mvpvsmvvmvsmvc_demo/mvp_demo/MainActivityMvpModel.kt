@@ -24,9 +24,9 @@ class MainActivityMvpModel : MainActivityMvpContract.Model {
     // user clicks on the button 
     // and it will take a delay of 
     // 1200 milliseconds to display next course detail 
-    override fun getNextCourse(listener: OnFinishedListener) {
+    override fun getNextCourse(onFinishedListener: OnFinishedListener) {
         Handler().postDelayed({
-            listener.onFinished(randomString)
+            onFinishedListener.onFinished(randomString)
         }, 1200)
     }
 

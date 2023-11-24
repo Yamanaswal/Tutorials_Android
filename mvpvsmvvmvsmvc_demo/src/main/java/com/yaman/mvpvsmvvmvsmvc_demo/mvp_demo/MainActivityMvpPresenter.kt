@@ -4,7 +4,7 @@ import com.yaman.mvpvsmvvmvsmvc_demo.mvp_demo.MainActivityMvpContract.Model.OnFi
 
 // instantiating the objects of View and Model Interface
 // creating object of View Interface
-class Presenter(
+class MainActivityMvpPresenter(
     private var mainView: MainActivityMvpContract.View?,
     private val mainModel: MainActivityMvpContract.Model
 ) : MainActivityMvpContract.Presenter, OnFinishedListener {
