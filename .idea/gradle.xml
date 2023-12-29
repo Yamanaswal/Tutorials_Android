@@ -9,6 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Secure_NDK" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/dependency_injection_using_hilt_android" />
             <option value="$PROJECT_DIR$/in_app_purchase_android" />
