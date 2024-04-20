@@ -12,10 +12,6 @@ dependencyResolutionManagement {
 rootProject.name = "Tutorials_Android"
 include ':app'
 include ':dependency_injection_using_hilt_android'
-//include ':network_tools'
-//include ':library_tools'
-//include ':network_tools'
-//include ':dialogs'
 include ':jetpackpractice'
 include ':in_app_purchase_android'
 include ':rxjavapractice'
